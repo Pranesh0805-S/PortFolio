@@ -1,6 +1,7 @@
 "use client";
 
 const LINKS = [
+  { href: "#about", label: "About" },
   { href: "#stack", label: "Stack" },
   { href: "#experience", label: "Experience" },
   { href: "#projects", label: "Projects" },
