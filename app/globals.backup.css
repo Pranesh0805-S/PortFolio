@@ -1,4 +1,12 @@
-@import "tailwindcss";
+@import "tailwindcss" source(none);
+@source "../app";
+@source "../components";
+@source "../lib";
+@source "../data";
+@source not "../lib";
+@source not "../components/providers";
+@source not "../components/ui/Noise.tsx";
+@source not "../components/canvas/CameraRig.tsx";
 
 :root {
   --bg: #08080c;
@@ -103,7 +111,6 @@ body {
     animation: none;
   }
 }
-
 
 
 

@@ -9,7 +9,7 @@ import Contact from "@/components/sections/Contact";
 
 export default function Home() {
   return (
-    <main className="bg-bg">
+    <main>
       <Navbar />
       <Hero />
       <AboutBento />

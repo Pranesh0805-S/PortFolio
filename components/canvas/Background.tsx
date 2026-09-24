@@ -62,10 +62,15 @@ const fragmentShader = `
 `;
 
 export default function Background() {
+  const meshRef = useRef<THREE.Mesh>(null);
   const materialRef = useRef<THREE.ShaderMaterial>(null);
-  const { size, viewport } = useThree();
+  const { size } = useThree();
 
   useFrame((state) => {
+    if (meshRef.current) {
+      meshRef.current.position.x = state.camera.position.x;
+      meshRef.current.position.y = state.camera.position.y;
+    }
     if (materialRef.current) {
       materialRef.current.uniforms.uTime.value = state.clock.elapsedTime;
       materialRef.current.uniforms.uResolution.value.set(size.width, size.height);
@@ -73,7 +78,7 @@ export default function Background() {
   });
 
   return (
-    <mesh position={[0, 0, -6]} scale={[viewport.width * 1.4, viewport.height * 1.4, 1]}>
+    <mesh ref={meshRef} position={[0, 0, -6]} scale={[size.width / 60, size.height / 60, 1]}>
       <planeGeometry args={[1, 1]} />
       <shaderMaterial
         ref={materialRef}

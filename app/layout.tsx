@@ -1,5 +1,8 @@
 import type { Metadata } from "next";
 import { Space_Grotesk, JetBrains_Mono } from "next/font/google";
+import SmoothScroll from "@/components/providers/SmoothScroll";
+import CanvasRoot from "@/components/canvas/CanvasRoot";
+import Noise from "@/components/ui/Noise";
 import "./globals.css";
 
 const spaceGrotesk = Space_Grotesk({
@@ -33,7 +36,11 @@ export default function RootLayout({
         className={`${spaceGrotesk.variable} ${jetbrainsMono.variable} antialiased bg-bg text-ink`}
         style={{ backgroundColor: "#08080c" }}
       >
-        {children}
+        <SmoothScroll>
+          <CanvasRoot />
+          <Noise />
+          <div className="relative z-10">{children}</div>
+        </SmoothScroll>
       </body>
     </html>
   );

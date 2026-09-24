@@ -1,7 +1,6 @@
 "use client";
 
 import { motion, type Variants } from "framer-motion";
-import HeroCanvas from "./HeroCanvas";
 import Terminal from "./Terminal";
 
 const container: Variants = {
@@ -23,7 +22,6 @@ export default function Hero() {
       id="top"
       className="relative flex min-h-[100svh] items-center overflow-hidden border-b border-line"
     >
-      <HeroCanvas />
       <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-bg via-transparent to-transparent" />
 
       <motion.div

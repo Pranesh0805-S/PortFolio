@@ -1,23 +1,9 @@
 "use client";
 
-import { useRef } from "react";
-import { Canvas, useFrame } from "@react-three/fiber";
-import * as THREE from "three";
+import { Canvas } from "@react-three/fiber";
 import Background from "./Background";
 import FloatingObjects from "./FloatingObjects";
-
-function PointerRig({ reduced, children }: { reduced: boolean; children: React.ReactNode }) {
-  const group = useRef<THREE.Group>(null);
-
-  useFrame((state) => {
-    if (!group.current || reduced) return;
-    const { x, y } = state.pointer;
-    group.current.rotation.y += (x * 0.25 - group.current.rotation.y) * 0.04;
-    group.current.rotation.x += (-y * 0.15 - group.current.rotation.x) * 0.04;
-  });
-
-  return <group ref={group}>{children}</group>;
-}
+import CameraRig from "./CameraRig";
 
 export default function Scene({ reduced }: { reduced: boolean }) {
   return (
@@ -32,9 +18,8 @@ export default function Scene({ reduced }: { reduced: boolean }) {
       <pointLight position={[-3, -2, 2]} intensity={0.5} color="#5eead4" />
 
       <Background />
-      <PointerRig reduced={reduced}>
-        <FloatingObjects reduced={reduced} />
-      </PointerRig>
+      <FloatingObjects reduced={reduced} />
+      <CameraRig reduced={reduced} />
     </Canvas>
   );
 }
