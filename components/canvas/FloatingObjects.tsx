@@ -21,7 +21,7 @@ function useFloat({ position, speed, floatAmp, phase }: FloatConfig, reduced: bo
     if (!ref.current) return;
     const t = state.clock.elapsedTime;
     if (!reduced) {
-      ref.current.position.y = base.y + Math.sin(t * speed + phase) * floatAmp;
+      ref.current.rotation.y = Math.sin(t * 0.3 + phase) * 0.35;
       ref.current.rotation.y += 0.0025;
       ref.current.rotation.x = Math.sin(t * 0.2 + phase) * 0.08;
     }

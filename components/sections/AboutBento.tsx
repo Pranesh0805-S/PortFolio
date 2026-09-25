@@ -82,7 +82,7 @@ export default function AboutBento() {
                   <p className="mt-3 max-w-sm text-sm leading-relaxed text-ink-dim">
                     A full-stack developer and final-year CS student in Coimbatore,
                     building AI-integrated products with Node.js, React, and the
-                    Claude API — with a focus on shipping things that actually work.
+                    Claude API â€” with a focus on shipping things that actually work.
                   </p>
                   <a
                     href="mailto:pranesh8506s@gmail.com"
@@ -109,7 +109,7 @@ export default function AboutBento() {
             </motion.div>
           ))}
 
-          {/* Featured project — hover reveal */}
+          {/* Featured project â€” hover reveal */}
           <motion.div variants={fadeUp} className="md:col-span-2">
             <TiltCard intensity={5} className="h-full">
               <div className="relative flex h-full min-h-[180px] flex-col justify-end p-6">
@@ -127,7 +127,7 @@ export default function AboutBento() {
                   href="#projects"
                   className="mt-4 inline-flex w-fit items-center gap-1 font-mono text-xs text-ink-dim transition-colors hover:text-accent-cyan"
                 >
-                  View all projects →
+                  View all projects â†’
                 </a>
               </div>
             </TiltCard>
@@ -160,11 +160,25 @@ export default function AboutBento() {
                 <p className="mt-2 text-sm text-ink">MongoDB for Students</p>
                 <p className="mt-3 font-mono text-xs text-accent-amber">Organized</p>
                 <p className="mt-1 text-sm text-ink-dim">
-                  Debugging Competition — Bliss 2025
+                  Debugging Competition â€” Bliss 2025
                 </p>
               </div>
             </TiltCard>
           </motion.div>
+          <motion.div variants={fadeUp}>
+          <TiltCard intensity={6} className="h-full">
+            <a
+              href="https://leetcode.com/u/pranesh0805-s/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex h-full flex-col justify-center p-5"
+            >
+              <p className="font-mono text-xs text-accent-amber">LeetCode</p>
+              <p className="mt-2 text-sm text-ink">@pranesh0805-s</p>
+              <p className="mt-1 text-xs text-ink-dim">View profile →</p>
+            </a>
+          </TiltCard>
+        </motion.div>
         </div>
       </motion.div>
     </section>

@@ -57,7 +57,7 @@ export default function Contact() {
 
         {status === "sent" ? (
           <div className="mt-10 rounded-lg border border-accent-cyan/30 bg-accent-cyan/5 px-5 py-4 text-sm text-ink">
-            Message sent — thanks for reaching out. I&apos;ll reply soon.
+            Message sent â€” thanks for reaching out. I&apos;ll reply soon.
           </div>
         ) : (
           <form className="mt-10 space-y-4" onSubmit={handleSubmit}>
@@ -97,7 +97,7 @@ export default function Contact() {
               disabled={status === "sending"}
               className="rounded-lg bg-ink px-6 py-3 text-sm font-medium text-bg transition-colors hover:bg-accent-cyan disabled:cursor-not-allowed disabled:opacity-60"
             >
-              {status === "sending" ? "Sending…" : "Send message"}
+              {status === "sending" ? "Sendingâ€¦" : "Send message"}
             </button>
           </form>
         )}

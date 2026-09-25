@@ -19,6 +19,7 @@ export function useLabelTexture(label: string, color: string) {
     }
     const texture = new THREE.CanvasTexture(canvas);
     texture.needsUpdate = true;
+    texture.colorSpace = THREE.SRGBColorSpace;
     return texture;
   }, [label, color]);
 }

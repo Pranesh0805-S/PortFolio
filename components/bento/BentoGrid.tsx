@@ -71,7 +71,7 @@ export default function BentoGrid() {
                 Resume
               </a>
               <a
-                href="mailto:hello@pranesh.dev"
+                href="mailto:pranesh8506s@gmail.com"
                 className="rounded-lg bg-ink px-4 py-2 text-sm font-medium text-bg transition-colors hover:bg-accent-cyan"
               >
                 Email me

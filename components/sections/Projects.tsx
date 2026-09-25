@@ -10,11 +10,13 @@ function ProjectThumb({
   name,
   category,
   accent,
+  hasUI,
 }: {
   image?: string;
   name: string;
   category: string;
   accent: string;
+  hasUI: boolean;
 }) {
   const [failed, setFailed] = useState(false);
 
@@ -35,9 +37,12 @@ function ProjectThumb({
 
   return (
     <div
-      className="flex h-40 items-center justify-end p-6"
+      className="flex h-40 items-center justify-between p-6"
       style={{ background: `linear-gradient(135deg, ${accent}1a, transparent 70%)` }}
     >
+      <span className="font-mono text-[10px] uppercase tracking-widest text-ink-dim">
+        {hasUI ? "no live preview yet" : "backend / CLI project"}
+      </span>
       <span className="font-mono text-xs" style={{ color: accent }}>
         {category}
       </span>
@@ -68,6 +73,7 @@ export default function Projects() {
                 name={project.name}
                 category={project.category}
                 accent={project.accent}
+                hasUI={project.hasUI}
               />
 
               <div className="border-t border-line p-6">
@@ -84,6 +90,27 @@ export default function Projects() {
                       {tech}
                     </span>
                   ))}
+                </div>
+
+                <div className="mt-5 flex gap-3">
+                  <a
+                    href={project.github}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="rounded-lg border border-line-strong px-3 py-1.5 text-xs font-medium text-ink transition-colors hover:border-accent-cyan hover:text-accent-cyan"
+                  >
+                    GitHub
+                  </a>
+                  {project.live && (
+                    <a
+                      href={project.live}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="rounded-lg bg-ink px-3 py-1.5 text-xs font-medium text-bg transition-colors hover:bg-accent-cyan"
+                    >
+                      Live
+                    </a>
+                  )}
                 </div>
               </div>
             </motion.article>
