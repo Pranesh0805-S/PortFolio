@@ -2,8 +2,8 @@
 import { useRef } from "react";
 
 export default function MagneticButton({
-  children, href, className = "",
-}: { children: React.ReactNode; href: string; className?: string }) {
+  children, href, className = "", download,
+}: { children: React.ReactNode; href: string; className?: string; download?: boolean | string }) {
   const ref = useRef<HTMLAnchorElement>(null);
 
   const move = (e: React.PointerEvent) => {
@@ -16,8 +16,14 @@ export default function MagneticButton({
   const leave = () => { ref.current!.style.transform = "translate(0,0)"; };
 
   return (
-    <a ref={ref} href={href} onPointerMove={move} onPointerLeave={leave}
-       className={`inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/[0.06] px-6 py-3 transition-transform duration-200 ease-out ${className}`}>
+    <a
+      ref={ref}
+      href={href}
+      download={download}
+      onPointerMove={move}
+      onPointerLeave={leave}
+      className={`inline-flex items-center gap-2 rounded-lg border border-line-strong transition-[transform,background-color,border-color,color] duration-200 ease-out ${className}`}
+    >
       {children}
     </a>
   );

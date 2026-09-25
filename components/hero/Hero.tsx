@@ -2,6 +2,7 @@
 
 import { motion, type Variants } from "framer-motion";
 import Terminal from "./Terminal";
+import MagneticButton from "@/components/ui/MagneticButton";
 
 const container: Variants = {
   hidden: { opacity: 0 },
@@ -58,25 +59,26 @@ export default function Hero() {
         </motion.div>
 
         <motion.div variants={item} className="mt-10 flex flex-wrap items-center gap-4">
-          <a
-            href="#projects"
-            className="rounded-lg bg-ink px-5 py-3 text-sm font-medium text-bg transition-colors hover:bg-accent-cyan"
-          >
-            View projects
-          </a>
-          <a
-            href="/resume.pdf"
-            className="rounded-lg border border-line-strong px-5 py-3 text-sm font-medium text-ink transition-colors hover:border-accent-cyan hover:text-accent-cyan"
-          >
-            Download resume
-          </a>
-          <a
-            href="#contact"
-            className="px-2 py-3 text-sm font-medium text-ink-dim transition-colors hover:text-ink"
-          >
-            Contact me
-          </a>
-        </motion.div>
+        <MagneticButton
+          href="#projects"
+          className="!rounded-lg !border-0 bg-ink px-5 py-3 text-sm font-medium text-bg hover:bg-accent-cyan"
+        >
+          View projects
+        </MagneticButton>
+        <MagneticButton
+          href="/resume.pdf"
+          download="Pranesh S Resume.pdf"
+          className="border-line-strong px-5 py-3 text-sm font-medium text-ink hover:border-accent-cyan hover:text-accent-cyan"
+        >
+          Download resume
+        </MagneticButton>
+        <a
+          href="#contact"
+          className="px-2 py-3 text-sm font-medium text-ink-dim transition-colors hover:text-ink"
+        >
+          Contact me
+        </a>
+      </motion.div>
       </motion.div>
 
       <motion.a

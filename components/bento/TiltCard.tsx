@@ -27,10 +27,16 @@ export default function TiltCard({
   const glowY = useTransform(springY, [0, 1], ["0%", "100%"]);
 
   function handleMove(e: React.PointerEvent<HTMLDivElement>) {
-    if (reduced || !ref.current) return;
+    if (!ref.current) return;
     const rect = ref.current.getBoundingClientRect();
-    x.set((e.clientX - rect.left) / rect.width);
-    y.set((e.clientY - rect.top) / rect.height);
+    const px = (e.clientX - rect.left) / rect.width;
+    const py = (e.clientY - rect.top) / rect.height;
+    if (!reduced) {
+      x.set(px);
+      y.set(py);
+    }
+    ref.current.style.setProperty("--mx", `${e.clientX - rect.left}px`);
+    ref.current.style.setProperty("--my", `${e.clientY - rect.top}px`);
   }
 
   function handleLeave() {
@@ -48,7 +54,7 @@ export default function TiltCard({
           ? undefined
           : { rotateX, rotateY, transformStyle: "preserve-3d", perspective: 800 }
       }
-      className={`group relative overflow-hidden rounded-2xl border border-line bg-bg-elevated/60 ${className}`}
+      className={`group relative overflow-hidden rounded-2xl border border-line bg-bg-elevated/60 before:pointer-events-none before:absolute before:inset-0 before:opacity-0 before:transition-opacity before:duration-300 group-hover:before:opacity-100 before:bg-[radial-gradient(320px_circle_at_var(--mx)_var(--my),rgba(94,234,212,0.10),transparent_65%)] ${className}`}
     >
       {!reduced && (
         <motion.div
@@ -59,7 +65,7 @@ export default function TiltCard({
           }}
         />
       )}
-      {children}
+      <div className="relative z-10 h-full">{children}</div>
     </motion.div>
   );
 }

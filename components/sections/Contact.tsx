@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import MagneticButton from "@/components/ui/MagneticButton";
 
 type Status = "idle" | "sending" | "sent" | "error";
 
@@ -95,9 +96,16 @@ export default function Contact() {
             <button
               type="submit"
               disabled={status === "sending"}
-              className="rounded-lg bg-ink px-6 py-3 text-sm font-medium text-bg transition-colors hover:bg-accent-cyan disabled:cursor-not-allowed disabled:opacity-60"
+              onPointerMove={(e) => {
+                const r = e.currentTarget.getBoundingClientRect();
+                const x = (e.clientX - (r.left + r.width / 2)) * 0.25;
+                const y = (e.clientY - (r.top + r.height / 2)) * 0.25;
+                e.currentTarget.style.transform = `translate(${x}px, ${y}px)`;
+              }}
+              onPointerLeave={(e) => { e.currentTarget.style.transform = "translate(0,0)"; }}
+              className="rounded-lg bg-ink px-6 py-3 text-sm font-medium text-bg transition-[transform,background-color] duration-200 ease-out hover:bg-accent-cyan disabled:cursor-not-allowed disabled:opacity-60"
             >
-              {status === "sending" ? "Sendingâ€¦" : "Send message"}
+              {status === "sending" ? "Sending…" : "Send message"}
             </button>
           </form>
         )}

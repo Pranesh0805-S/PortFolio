@@ -61,6 +61,7 @@ export default function Navbar() {
 
         <a
           href="/resume.pdf"
+          download="Pranesh S Resume.pdf"
           className="rounded-lg border border-line-strong px-4 py-2 text-xs font-medium text-ink transition-colors hover:border-accent-cyan hover:text-accent-cyan"
         >
           Resume
