@@ -3,9 +3,16 @@ import { useFrame } from "@react-three/fiber";
 import { MathUtils } from "three";
 import { scrollState, mouse } from "@/lib/scrollState";
 
-// One camera pose per scroll segment: [x, y, z]
+// One camera pose per section, roughly matched to page order:
+// Hero, About, Stack, Experience, Projects, Contact, Footer
 const POSES: [number, number, number][] = [
-  [0, 0, 5.2], [-1.2, -0.6, 6], [1.2, -1.2, 6.5], [0, -1.8, 5.5],
+  [0, 0, 5.2],
+  [-1.4, -0.4, 6.2],
+  [1.2, -0.8, 6.8],
+  [-1.0, -1.4, 6.4],
+  [1.6, -1.9, 7.2],
+  [-0.8, -2.4, 6.6],
+  [0, -2.8, 5.8],
 ];
 
 export default function CameraRig({ reduced }: { reduced: boolean }) {

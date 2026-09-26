@@ -33,6 +33,7 @@ export default function RootLayout({
   return (
     <html lang="en" className="dark" style={{ backgroundColor: "#08080c" }}>
       <body
+        suppressHydrationWarning
         className={`${spaceGrotesk.variable} ${jetbrainsMono.variable} antialiased bg-bg text-ink`}
         style={{ backgroundColor: "#08080c" }}
       >
