@@ -61,14 +61,14 @@ export default function Hero() {
         <motion.div variants={item} className="mt-10 flex flex-wrap items-center gap-4">
         <MagneticButton
           href="#projects"
-          className="!rounded-lg !border-0 bg-ink px-5 py-3 text-sm font-medium text-bg hover:bg-accent-cyan"
+          className="!rounded-full !border-0 bg-ink px-6 py-3.5 text-sm font-medium uppercase tracking-widest text-bg hover:bg-accent-cyan"
         >
           View projects
         </MagneticButton>
         <MagneticButton
           href="/resume.pdf"
-          download="Pranesh S Resume.pdf"
-          className="border-line-strong px-5 py-3 text-sm font-medium text-ink hover:border-accent-cyan hover:text-accent-cyan"
+          download="Pranesh_S_Resume.pdf"
+          className="!rounded-full border-line-strong px-6 py-3.5 text-sm font-medium uppercase tracking-widest text-ink hover:border-accent-cyan hover:text-accent-cyan"
         >
           Download resume
         </MagneticButton>

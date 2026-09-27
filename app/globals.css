@@ -104,8 +104,10 @@ body {
   }
 }
 
-
-
-
-
-
+.gradient-heading {
+  background: linear-gradient(180deg, var(--ink) 0%, var(--accent-cyan) 120%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+}

@@ -1,6 +1,5 @@
 "use client";
 
-import Image from "next/image";
 import { motion, type Variants } from "framer-motion";
 import TiltCard from "@/components/bento/TiltCard";
 
@@ -65,15 +64,8 @@ export default function AboutBento() {
                   }}
                 />
 
-                <div className="relative mx-auto mt-8 h-56 w-48 overflow-hidden rounded-2xl border border-line-strong sm:h-64 sm:w-56">
-                  <Image
-                    src="/about/profile.png"
-                    alt="Pranesh S"
-                    fill
-                    sizes="240px"
-                    className="object-cover"
-                    priority
-                  />
+                <div className="mx-auto mt-8 flex h-56 w-48 items-center justify-center rounded-2xl border border-line-strong bg-gradient-to-br from-accent-cyan/10 to-accent-violet/10 sm:h-64 sm:w-56">
+                  <span className="font-mono text-5xl font-bold text-accent-cyan">PS</span>
                 </div>
 
                 <div className="mt-8">

@@ -16,7 +16,7 @@ export default function CanvasRoot() {
   useMouseLerp();
 
   return (
-    <div aria-hidden className="pointer-events-none fixed inset-0 z-0">
+    <div aria-hidden className="pointer-events-none fixed inset-0 z-0 opacity-60">
       <CanvasErrorBoundary fallback={<div className="h-full w-full" style={fallbackStyle} />}>
         <Scene reduced={reduced} />
       </CanvasErrorBoundary>

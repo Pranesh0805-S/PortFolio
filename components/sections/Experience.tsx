@@ -7,7 +7,7 @@ export default function Experience() {
   return (
     <section id="experience" className="border-b border-line py-24">
       <div className="mx-auto max-w-6xl px-6 sm:px-10">
-        <h2 className="mb-14 text-2xl font-semibold tracking-tight text-ink">
+        <h2 className="gradient-heading mb-14 text-4xl font-black tracking-tight sm:text-5xl">
           Experience
         </h2>
 

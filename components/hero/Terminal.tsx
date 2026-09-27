@@ -49,12 +49,12 @@ export default function Terminal() {
   }, [text, phase, lineIndex, reduced]);
 
   return (
-    <div className="inline-flex items-center gap-2 rounded-lg border border-line bg-bg-elevated/80 px-4 py-2.5 font-mono text-sm text-ink-dim backdrop-blur-sm">
-      <span className="text-accent-cyan">$</span>
-      <span className="text-ink">whoami</span>
-      <span className="mx-1 text-ink-dim/50">—</span>
-      <span aria-live="polite">{text}</span>
-      <span className="ml-0.5 inline-block h-4 w-[2px] animate-[blink_1s_steps(1)_infinite] bg-accent-cyan" />
+    <div className="inline-flex max-w-xl items-center gap-3 rounded-2xl border border-line bg-bg-elevated/80 px-5 py-4 backdrop-blur-sm">
+      <span className="text-accent-cyan text-lg sm:text-xl">$</span>
+      <span className="text-ink text-lg sm:text-xl">whoami</span>
+      <span className="mx-1 text-ink-dim/50 text-lg">—</span>
+      <span aria-live="polite" className="text-lg text-ink-dim sm:text-xl">{text}</span>
+      <span className="ml-0.5 inline-block h-6 w-[2px] animate-[blink_1s_steps(1)_infinite] bg-accent-cyan" />
     </div>
   );
 }

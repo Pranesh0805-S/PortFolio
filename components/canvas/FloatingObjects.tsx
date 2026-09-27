@@ -93,13 +93,8 @@ function WireShape({
 export default function FloatingObjects({ reduced }: { reduced: boolean }) {
   return (
     <group position={[1.6, 0, 0]}>
-      <TechCard label="React" position={[0.6, 0.9, 0]} color="#5eead4" reduced={reduced} />
-      <TechCard label="Node" position={[1.7, -0.5, -0.4]} color="#a3e635" reduced={reduced} />
-      <TechCard label="Mongo" position={[0.2, -1.3, 0.3]} color="#4ade80" reduced={reduced} />
-
-      <WireShape geometry="icosahedron" position={[2.3, 1.1, -0.6]} color="#a78bfa" scale={0.9} reduced={reduced} />
-      <WireShape geometry="torusKnot" position={[-0.2, 0.1, -0.8]} color="#5eead4" scale={0.8} reduced={reduced} />
-      <WireShape geometry="octahedron" position={[1.4, -1.8, -0.3]} color="#fbbf24" scale={0.85} reduced={reduced} />
+      <TechCard label="React" position={[1.2, 0.6, -0.3]} color="#5eead4" reduced={reduced} />
+      <WireShape geometry="icosahedron" position={[2.2, -1.0, -0.8]} color="#a78bfa" scale={0.7} reduced={reduced} />
     </group>
   );
 }
