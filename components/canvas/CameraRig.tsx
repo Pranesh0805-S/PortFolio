@@ -7,11 +7,11 @@ import { scrollState, mouse } from "@/lib/scrollState";
 // Hero, About, Stack, Experience, Projects, Contact, Footer
 const POSES: [number, number, number][] = [
   [0, 0, 5.2],
-  [-1.4, -0.4, 6.2],
-  [1.2, -0.8, 6.8],
-  [-1.0, -1.4, 6.4],
-  [1.6, -1.9, 7.2],
-  [-0.8, -2.4, 6.6],
+  [-0.2, -0.4, 6.2],
+  [0.35, -0.8, 6.8],
+  [-0.25, -1.4, 6.4],
+  [0.45, -1.9, 7.2],
+  [-0.2, -2.4, 6.6],
   [0, -2.8, 5.8],
 ];
 

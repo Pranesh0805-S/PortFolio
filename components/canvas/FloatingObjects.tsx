@@ -1,100 +1,57 @@
 "use client";
 
-import { useMemo, useRef } from "react";
+import { useRef } from "react";
+import { Float, MeshTransmissionMaterial } from "@react-three/drei";
 import { useFrame } from "@react-three/fiber";
-import { RoundedBox } from "@react-three/drei";
 import * as THREE from "three";
-import { useLabelTexture } from "./useLabelTexture";
+import { useReducedMotion } from "@/lib/useReducedMotion";
 
-type FloatConfig = {
-  position: [number, number, number];
-  speed: number;
-  floatAmp: number;
-  phase: number;
-};
+function Monogram() {
+  const group = useRef<THREE.Group>(null);
+  const reduced = useReducedMotion();
 
-function useFloat({ position, speed, floatAmp, phase }: FloatConfig, reduced: boolean) {
-  const ref = useRef<THREE.Group>(null);
-  const base = useMemo(() => new THREE.Vector3(...position), [position]);
-
-  useFrame((state) => {
-    if (!ref.current) return;
-    const t = state.clock.elapsedTime;
-    if (!reduced) {
-      ref.current.rotation.y = Math.sin(t * 0.3 + phase) * 0.35;
-      ref.current.rotation.y += 0.0025;
-      ref.current.rotation.x = Math.sin(t * 0.2 + phase) * 0.08;
-    }
+  useFrame((state, delta) => {
+    if (!group.current || reduced) return;
+    group.current.rotation.y += delta * 0.14;
+    group.current.rotation.x = Math.sin(state.clock.elapsedTime * 0.22) * 0.06;
   });
 
-  return ref;
-}
-
-function TechCard({
-  label,
-  position,
-  color,
-  reduced,
-}: {
-  label: string;
-  position: [number, number, number];
-  color: string;
-  reduced: boolean;
-}) {
-  const ref = useFloat({ position, speed: 0.6, floatAmp: 0.12, phase: position[0] }, reduced);
-  const labelTexture = useLabelTexture(label, color);
-
   return (
-    <group ref={ref} position={position}>
-      <RoundedBox args={[1.1, 1.1, 0.12]} radius={0.1} smoothness={4}>
-        <meshStandardMaterial
-          color="#11111a"
-          roughness={0.35}
-          metalness={0.2}
-          emissive={color}
-          emissiveIntensity={0.08}
-        />
-      </RoundedBox>
-      <mesh position={[0, 0, 0.07]}>
-        <planeGeometry args={[0.95, 0.95]} />
-        <meshBasicMaterial map={labelTexture} transparent />
+    <group ref={group}>
+      <mesh castShadow>
+        <torusKnotGeometry args={[0.84, 0.29, 220, 32, 2, 3]} />
+        <meshStandardMaterial color="#d28d86" roughness={0.24} metalness={0.24} emissive="#713f62" emissiveIntensity={0.18} />
       </mesh>
-    </group>
-  );
-}
-
-function WireShape({
-  geometry,
-  position,
-  color,
-  scale = 1,
-  reduced,
-}: {
-  geometry: "icosahedron" | "torusKnot" | "octahedron";
-  position: [number, number, number];
-  color: string;
-  scale?: number;
-  reduced: boolean;
-}) {
-  const ref = useFloat({ position, speed: 0.4, floatAmp: 0.18, phase: position[1] + 1 }, reduced);
-
-  return (
-    <group ref={ref} position={position} scale={scale}>
-      <mesh>
-        {geometry === "icosahedron" && <icosahedronGeometry args={[0.6, 0]} />}
-        {geometry === "torusKnot" && <torusKnotGeometry args={[0.42, 0.14, 100, 12]} />}
-        {geometry === "octahedron" && <octahedronGeometry args={[0.55, 0]} />}
-        <meshStandardMaterial color={color} wireframe emissive={color} emissiveIntensity={0.3} />
+      <mesh position={[0, 0, -0.46]}>
+        <torusGeometry args={[1.29, 0.012, 12, 120]} />
+        <meshBasicMaterial color="#6e425f" transparent opacity={0.72} />
       </mesh>
+      <mesh position={[0, 0, -0.5]} rotation={[0, 0, Math.PI / 2]}>
+        <torusGeometry args={[1.43, 0.008, 10, 120]} />
+        <meshBasicMaterial color="#806b5c" transparent opacity={0.56} />
+      </mesh>
+      <Float speed={0.7} rotationIntensity={0.15} floatIntensity={0.18} floatingRange={[-0.08, 0.08]}>
+        <mesh position={[0, 0, 0.46]}>
+          <sphereGeometry args={[0.105, 24, 24]} />
+          <meshStandardMaterial color="#fff9f1" roughness={0.22} metalness={0.06} />
+        </mesh>
+      </Float>
     </group>
   );
 }
 
 export default function FloatingObjects({ reduced }: { reduced: boolean }) {
   return (
-    <group position={[1.6, 0, 0]}>
-      <TechCard label="React" position={[1.2, 0.6, -0.3]} color="#5eead4" reduced={reduced} />
-      <WireShape geometry="icosahedron" position={[2.2, -1.0, -0.8]} color="#a78bfa" scale={0.7} reduced={reduced} />
+    <group position={[1.35, -0.06, 0]} scale={reduced ? 1.1 : 1.16}>
+      <Monogram />
+      <mesh position={[-0.9, -0.83, -0.2]} rotation={[0.3, 0.2, -0.35]}>
+        <icosahedronGeometry args={[0.105, 1]} />
+        <meshStandardMaterial color="#de9a68" roughness={0.28} metalness={0.28} />
+      </mesh>
+      <mesh position={[1.08, 0.9, -0.3]} rotation={[0.2, 0.3, 0.2]}>
+        <octahedronGeometry args={[0.13, 0]} />
+        <meshStandardMaterial color="#9a7688" roughness={0.31} metalness={0.3} />
+      </mesh>
     </group>
   );
 }

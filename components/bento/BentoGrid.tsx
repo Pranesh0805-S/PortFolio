@@ -65,7 +65,7 @@ export default function BentoGrid() {
             </div>
             <div className="flex gap-3" id="contact">
               <a
-                href="/resume.pdf"
+                href="/Resume.pdf"
                 className="rounded-lg border border-line-strong px-4 py-2 text-sm text-ink transition-colors hover:border-accent-cyan hover:text-accent-cyan"
               >
                 Resume

@@ -1,72 +1,55 @@
 "use client";
 
+import { useState } from "react";
+import { ArrowUpRight, Menu, X } from "lucide-react";
+
 const LINKS = [
   { href: "#about", label: "About" },
   { href: "#stack", label: "Stack" },
-  { href: "#experience", label: "Experience" },
+  { href: "#experience", label: "Journey" },
+  { href: "#resume", label: "Resume" },
   { href: "#projects", label: "Projects" },
-  { href: "#contact", label: "Contact" },
 ];
 
 export default function Navbar() {
+  const [open, setOpen] = useState(false);
   return (
-    <header className="fixed inset-x-0 top-0 z-50 border-b border-line bg-bg/70 backdrop-blur-md">
-      <nav className="mx-auto flex max-w-6xl items-center justify-between px-6 py-4 sm:px-10">
-        <a href="#top" className="font-mono text-sm text-ink">
-          pranesh<span className="text-accent-cyan">.s</span>
-        </a>
+    <>
+      <header className="fixed inset-x-0 top-0 z-50 px-4 pt-4 sm:px-8 sm:pt-6">
+        <nav className="nav-shell mx-auto flex max-w-[1440px] items-center rounded-full border border-white/60 bg-[#f7f0e6]/75 px-4 py-2.5 shadow-[0_10px_40px_rgba(83,59,48,0.08)] backdrop-blur-xl sm:px-6 sm:py-3">
+          <a href="#top" className="flex items-center gap-2.5" aria-label="Pranesh, home">
+            <span className="brand-mark flex h-8 w-8 items-center justify-center rounded-full bg-[#453132] text-[11px] font-semibold tracking-[-0.06em] text-[#fff8ed] sm:h-9 sm:w-9 sm:text-xs">ps<span className="text-[#e5a683]">.</span></span>
+            <span className="font-mono text-[10px] uppercase tracking-[0.18em] text-[#4f4039] sm:text-[11px]">Pranesh S</span>
+          </a>
 
-        <ul className="hidden items-center gap-8 md:flex">
-          {LINKS.map((link) => (
-            <li key={link.href}>
-              <a
-                href={link.href}
-                className="font-mono text-xs uppercase tracking-wide text-ink-dim transition-colors hover:text-accent-cyan"
-              >
-                {link.label}
-              </a>
-            </li>
+          <ul className="nav-links hidden items-center gap-7 md:flex lg:gap-9">
+            {LINKS.map((link) => (
+              <li key={link.href}>
+                <a href={link.href} className="nav-link font-mono text-[10px] uppercase tracking-[0.15em] text-[#796960] transition-colors hover:text-[#332725] lg:text-[11px]">{link.label}</a>
+              </li>
+            ))}
+          </ul>
+
+          <a href="#contact" className="nav-cta hidden shrink-0 items-center gap-2 rounded-full bg-[#3e2e2c] px-4 py-2.5 text-[10px] font-medium uppercase tracking-[0.12em] text-[#fff8ed] transition duration-300 hover:bg-[#684552] sm:ml-auto sm:inline-flex">
+            Let&apos;s talk <ArrowUpRight size={13} />
+          </a>
+          <div className="nav-actions md:hidden">
+            <button type="button" aria-label={open ? "Close navigation" : "Open navigation"} aria-expanded={open} onClick={() => setOpen(!open)} className="flex h-9 w-9 items-center justify-center rounded-full border border-[#62483f]/15 text-[#453431] transition hover:bg-white/60 md:hidden">
+            {open ? <X size={17} /> : <Menu size={17} />}
+            </button>
+          </div>
+        </nav>
+      </header>
+
+      <div className={`mobile-menu fixed inset-0 z-40 bg-[#41312f]/25 px-4 pb-5 pt-[5.2rem] backdrop-blur-sm transition duration-300 md:hidden ${open ? "pointer-events-auto visible opacity-100" : "pointer-events-none invisible opacity-0"}`} onClick={() => setOpen(false)}>
+        <nav aria-label="Mobile navigation" className={`mx-auto flex max-w-[1440px] flex-col rounded-[24px] border border-white/70 bg-[#f8f1e8]/95 p-5 shadow-[0_20px_60px_rgba(50,34,30,0.17)] transition duration-300 ${open ? "translate-y-0" : "-translate-y-2"}`}>
+          <p className="mb-3 font-mono text-[9px] uppercase tracking-[0.18em] text-[#987866]">Take a look around</p>
+          {LINKS.map((link, i) => (
+            <a key={link.href} href={link.href} onClick={() => setOpen(false)} style={{ transitionDelay: open ? `${i * 45}ms` : "0ms" }} className={`border-b border-[#73584d]/10 py-3 text-[21px] tracking-[-0.045em] text-[#43332f] transition-all ${open ? "translate-x-0 opacity-100" : "-translate-x-2 opacity-0"}`}>{link.label}</a>
           ))}
-        </ul>
-
-        <div className="hidden items-center gap-2 sm:flex">
-          <a
-            href="https://github.com/Pranesh0805-S"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="rounded-lg border border-line-strong p-2 text-ink-dim transition-colors hover:border-accent-cyan hover:text-accent-cyan"
-            aria-label="GitHub"
-          >
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 .5C5.73.5.98 5.24.98 11.5c0 4.98 3.29 9.2 7.86 10.7.57.1.78-.25.78-.55v-2.1c-3.2.7-3.87-1.4-3.87-1.4-.53-1.32-1.3-1.68-1.3-1.68-1.06-.72.08-.7.08-.7 1.17.08 1.79 1.2 1.79 1.2 1.04 1.77 2.73 1.26 3.4.96.1-.75.4-1.26.73-1.55-2.55-.29-5.24-1.28-5.24-5.68 0-1.25.44-2.28 1.18-3.08-.12-.29-.51-1.46.11-3.05 0 0 .97-.31 3.17 1.18a11 11 0 0 1 5.78 0c2.2-1.5 3.17-1.18 3.17-1.18.62 1.6.23 2.76.11 3.05.74.8 1.18 1.83 1.18 3.08 0 4.41-2.7 5.38-5.26 5.67.41.36.78 1.06.78 2.14v3.17c0 .3.2.66.79.55A10.52 10.52 0 0 0 23.02 11.5C23.02 5.24 18.27.5 12 .5Z"/></svg>
-          </a>
-          <a
-            href="https://www.linkedin.com/in/pranesh0805/"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="rounded-lg border border-line-strong p-2 text-ink-dim transition-colors hover:border-accent-cyan hover:text-accent-cyan"
-            aria-label="LinkedIn"
-          >
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.86 0-2.14 1.45-2.14 2.94v5.67H9.34V9h3.42v1.56h.05c.48-.9 1.64-1.85 3.38-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28ZM5.34 7.43a2.07 2.07 0 1 1 0-4.13 2.07 2.07 0 0 1 0 4.13ZM7.12 20.45H3.55V9h3.57v11.45Z"/></svg>
-          </a>
-          <a
-            href="https://leetcode.com/u/pranesh0805-s/"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="rounded-lg border border-line-strong p-2 text-ink-dim transition-colors hover:border-accent-cyan hover:text-accent-cyan"
-            aria-label="LeetCode"
-          >
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M13.48 2.1a1.4 1.4 0 0 0-1.98 0L5.4 8.2a3.5 3.5 0 0 0 0 4.95l5.2 5.2a1.4 1.4 0 1 0 1.98-1.98l-5.2-5.2a.7.7 0 0 1 0-.99l6.1-6.1a1.4 1.4 0 0 0 0-1.98ZM9.5 13.5a1.4 1.4 0 0 0 0 2.8h9.1a1.4 1.4 0 0 0 0-2.8H9.5Zm4.1 4.2a1.4 1.4 0 1 0-1.98 1.98l1.55 1.55a3.5 3.5 0 0 0 4.95 0l1.83-1.83a1.4 1.4 0 1 0-1.98-1.98l-1.83 1.83a.7.7 0 0 1-.99 0l-1.55-1.55Z"/></svg>
-          </a>
-        </div>
-
-        <a
-          href="/resume.pdf"
-          download="Pranesh S Resume.pdf"
-          className="rounded-lg border border-line-strong px-4 py-2 text-xs font-medium text-ink transition-colors hover:border-accent-cyan hover:text-accent-cyan"
-        >
-          Resume
-        </a>
-      </nav>
-    </header>
+          <a href="#contact" onClick={() => setOpen(false)} className="mt-4 inline-flex items-center justify-center gap-2 rounded-full bg-[#3e2e2c] py-3.5 text-[11px] uppercase tracking-[0.12em] text-[#fff8ed]">Let&apos;s talk <ArrowUpRight size={14} /></a>
+        </nav>
+      </div>
+    </>
   );
 }

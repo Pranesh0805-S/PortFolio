@@ -124,7 +124,7 @@ export default function Projects() {
 
       <div ref={ref} className="relative mx-auto max-w-4xl px-6 sm:px-10">
         {projects.map((project, i) => (
-          <div key={project.slug} className="mb-8" style={{ height: "85vh" }}>
+          <div key={project.slug} id={i === 0 ? "envoy-mail" : undefined} className="mb-8 scroll-mt-28" style={{ height: "85vh" }}>
             <ProjectCard project={project} index={i} total={projects.length} progress={scrollYProgress} />
           </div>
         ))}

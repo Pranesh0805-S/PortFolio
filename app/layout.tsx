@@ -1,8 +1,6 @@
 import type { Metadata } from "next";
 import { Space_Grotesk, JetBrains_Mono } from "next/font/google";
 import SmoothScroll from "@/components/providers/SmoothScroll";
-import CanvasRoot from "@/components/canvas/CanvasRoot";
-import Noise from "@/components/ui/Noise";
 import "./globals.css";
 
 const spaceGrotesk = Space_Grotesk({
@@ -20,9 +18,9 @@ const jetbrainsMono = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Pranesh S | Full Stack Developer",
+  title: "Pranesh S — Developer & AI Builder",
   description:
-    "A modern developer portfolio showcasing projects, skills, experience and interactive work by Pranesh S.",
+    "Pranesh S is a full-stack developer and AI builder creating useful, thoughtfully crafted software.",
 };
 
 export default function RootLayout({
@@ -31,15 +29,19 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className="dark" style={{ backgroundColor: "#08080c" }}>
+    <html lang="en" data-theme="dark" suppressHydrationWarning>
+      <head>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `(function(){try{var t=localStorage.getItem("portfolio-theme");if(t==="light"||t==="dark")document.documentElement.dataset.theme=t}catch(e){}})()`,
+          }}
+        />
+      </head>
       <body
         suppressHydrationWarning
         className={`${spaceGrotesk.variable} ${jetbrainsMono.variable} antialiased bg-bg text-ink`}
-        style={{ backgroundColor: "#08080c" }}
       >
         <SmoothScroll>
-          <CanvasRoot />
-          <Noise />
           <div className="relative z-10">{children}</div>
         </SmoothScroll>
       </body>

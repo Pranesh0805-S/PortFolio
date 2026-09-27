@@ -1,7 +1,6 @@
 "use client";
 import dynamic from "next/dynamic";
 import CanvasErrorBoundary from "./CanvasErrorBoundary";
-import { useReducedMotion } from "@/lib/useReducedMotion";
 import { useMouseLerp } from "@/lib/useMouseLerp";
 
 const Scene = dynamic(() => import("./Scene"), { ssr: false });
@@ -12,13 +11,12 @@ const fallbackStyle = {
 };
 
 export default function CanvasRoot() {
-  const reduced = useReducedMotion();
   useMouseLerp();
 
   return (
-    <div aria-hidden className="pointer-events-none fixed inset-0 z-0 opacity-60">
+    <div aria-hidden className="pointer-events-none fixed inset-0 z-0 opacity-25">
       <CanvasErrorBoundary fallback={<div className="h-full w-full" style={fallbackStyle} />}>
-        <Scene reduced={reduced} />
+        <Scene />
       </CanvasErrorBoundary>
     </div>
   );

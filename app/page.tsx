@@ -4,6 +4,7 @@ import Hero from "@/components/hero/Hero";
 import AboutBento from "@/components/sections/AboutBento";
 import TechStack from "@/components/sections/TechStack";
 import Experience from "@/components/sections/Experience";
+import ResumeSection from "@/components/sections/ResumeSection";
 import Projects from "@/components/sections/Projects";
 import Contact from "@/components/sections/Contact";
 
@@ -15,6 +16,7 @@ export default function Home() {
       <AboutBento />
       <TechStack />
       <Experience />
+      <ResumeSection />
       <Projects />
       <Contact />
       <Footer />
