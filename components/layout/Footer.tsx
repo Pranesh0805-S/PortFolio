@@ -1,9 +1,12 @@
 export default function Footer() {
   return (
-    <footer className="border-t border-line py-8">
-      <div className="mx-auto flex max-w-6xl flex-col items-center justify-between gap-3 px-6 text-xs text-ink-dim sm:flex-row sm:px-10">
-        <span>Â© {new Date().getFullYear()} Pranesh S. All rights reserved.</span>
-        <div className="flex gap-5 font-mono">
+    <footer className="site-footer">
+      <div className="flex flex-col items-center justify-between gap-4 px-6 text-xs sm:flex-row sm:px-10">
+        <div className="footer-identity">
+          <span className="footer-copyright">© {new Date().getFullYear()} Pranesh S.</span>
+          <span className="footer-note">Thoughtfully built in Coimbatore, India.</span>
+        </div>
+        <div className="footer-links flex font-mono">
           <a href="https://github.com/Pranesh0805-S" target="_blank" rel="noopener noreferrer" className="hover:text-accent-cyan">
             GitHub
           </a>

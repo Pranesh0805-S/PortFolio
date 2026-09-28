@@ -1,7 +1,7 @@
 "use client";
 
 import { useRef } from "react";
-import { Float, MeshTransmissionMaterial } from "@react-three/drei";
+import { Float } from "@react-three/drei";
 import { useFrame } from "@react-three/fiber";
 import * as THREE from "three";
 import { useReducedMotion } from "@/lib/useReducedMotion";

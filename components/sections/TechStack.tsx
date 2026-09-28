@@ -1,37 +1,27 @@
-const STACK = [
-  "React",
-  "Node.js",
-  "Express",
-  "MongoDB",
-  "Next.js",
-  "TypeScript",
-  "Claude API",
-  "Supabase",
-  "Tailwind CSS",
-  "Three.js",
+const TOOLSETS = [
+  { number: "A", title: "Interface", note: "The part people feel", tools: ["React", "Next.js", "TypeScript", "Tailwind CSS"] },
+  { number: "B", title: "Application", note: "The systems underneath", tools: ["Node.js", "Express", "MongoDB", "Supabase"] },
+  { number: "C", title: "Exploration", note: "New ways to build", tools: ["Claude API", "Three.js", "Python", "FastAPI"] },
 ];
 
 export default function TechStack() {
-  const doubled = [...STACK, ...STACK];
-
   return (
-    <section id="stack" className="border-b border-line py-16">
-      <p className="mx-auto mb-8 max-w-6xl px-6 font-mono text-xs uppercase tracking-widest text-ink-dim sm:px-10">
-        Tech I build with
-      </p>
-
-      <div className="relative overflow-hidden">
-        <div className="pointer-events-none absolute inset-y-0 left-0 z-10 w-24 bg-gradient-to-r from-bg to-transparent" />
-        <div className="pointer-events-none absolute inset-y-0 right-0 z-10 w-24 bg-gradient-to-l from-bg to-transparent" />
-
-        <div className="flex w-max animate-[marquee_28s_linear_infinite] gap-4">
-          {doubled.map((tech, i) => (
-            <span
-              key={`${tech}-${i}`}
-              className="whitespace-nowrap rounded-full border border-line px-5 py-2.5 font-mono text-sm text-ink-dim"
-            >
-              {tech}
-            </span>
+    <section id="stack" className="chapter stack-section">
+      <div className="chapter-shell">
+        <div className="chapter-heading">
+          <span className="chapter-index">02 <i /> TOOLKIT</span>
+          <span className="chapter-coordinate">A stack is a means, not the point.</span>
+        </div>
+        <div className="stack-intro">
+          <h2>The tools I reach for.<br /><em>The ideas lead.</em></h2>
+          <p>I pick technology for the problem in front of me. Here are the tools I&apos;ve been learning, testing, and putting to work.</p>
+        </div>
+        <div className="toolset-grid">
+          {TOOLSETS.map((group) => (
+            <article className="toolset" key={group.title}>
+              <div className="toolset-heading"><span>{group.number}</span><div><h3>{group.title}</h3><p>{group.note}</p></div></div>
+              <ul>{group.tools.map((tool, index) => <li key={tool}><span>{String(index + 1).padStart(2, "0")}</span>{tool}</li>)}</ul>
+            </article>
           ))}
         </div>
       </div>

@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import MagneticButton from "@/components/ui/MagneticButton";
+import { ArrowUpRight, Mail, Send } from "lucide-react";
 
 type Status = "idle" | "sending" | "sent" | "error";
 
@@ -43,51 +43,43 @@ export default function Contact() {
   }
 
   return (
-    <section id="contact" className="py-24">
-      <div className="mx-auto max-w-3xl px-6 sm:px-10">
-        <p className="font-mono text-xs uppercase tracking-widest text-accent-cyan">
-          Get in touch
-        </p>
-        <h2 className="mt-3 text-3xl font-semibold tracking-tight text-ink sm:text-4xl">
-          Let&apos;s build something together.
-        </h2>
-        <p className="mt-4 max-w-md text-ink-dim">
-          Open to full-stack and AI engineering roles. Reach out directly, or
-          use the form below.
-        </p>
+    <section id="contact" className="contact-section py-24 sm:py-32">
+      <div className="contact-layout mx-auto grid max-w-6xl gap-12 px-6 sm:px-10 lg:grid-cols-[.85fr_1.15fr] lg:gap-20">
+        <div className="contact-copy">
+          <p className="contact-kicker font-mono text-[10px] uppercase tracking-[.18em]">
+            <span /> Get in touch
+          </p>
+          <h2 className="mt-5 text-4xl font-medium tracking-tight sm:text-5xl">
+            Have a good problem?
+            <span>Let&apos;s build it together.</span>
+          </h2>
+          <p className="mt-5 max-w-md text-sm leading-7 text-ink-dim sm:text-base">
+            I&apos;m open to full-stack and AI engineering roles, collaborations, and ambitious ideas. Tell me what you&apos;re working on.
+          </p>
+          <a className="contact-email mt-8 inline-flex items-center gap-3" href="mailto:pranesh8506s@gmail.com">
+            <span><Mail size={16} /></span>
+            <span>pranesh8506s@gmail.com</span>
+            <ArrowUpRight size={15} />
+          </a>
+        </div>
+
+        <div className="contact-form-panel">
+          <div className="contact-form-heading">
+            <span>01 <i /> 02</span>
+            <p>Send a note</p>
+          </div>
 
         {status === "sent" ? (
-          <div className="mt-10 rounded-lg border border-accent-cyan/30 bg-accent-cyan/5 px-5 py-4 text-sm text-ink">
-            Message sent â€” thanks for reaching out. I&apos;ll reply soon.
+          <div className="contact-success mt-8 rounded-xl border px-5 py-5 text-sm">
+            Message sent — thanks for reaching out. I&apos;ll reply soon.
           </div>
         ) : (
-          <form className="mt-10 space-y-4" onSubmit={handleSubmit}>
-            <div className="grid gap-4 sm:grid-cols-2">
-              <input
-                type="text"
-                required
-                placeholder="Full name"
-                value={name}
-                onChange={(e) => setName(e.target.value)}
-                className="rounded-lg border border-line bg-bg-elevated px-4 py-3 text-sm text-ink placeholder:text-ink-dim outline-none focus:border-accent-cyan"
-              />
-              <input
-                type="email"
-                required
-                placeholder="Email address"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                className="rounded-lg border border-line bg-bg-elevated px-4 py-3 text-sm text-ink placeholder:text-ink-dim outline-none focus:border-accent-cyan"
-              />
+          <form className="mt-6 space-y-4" onSubmit={handleSubmit}>
+            <div className="contact-fields-row">
+              <label className="contact-field"><span>Name</span><input type="text" required autoComplete="name" placeholder="Your name" value={name} onChange={(e) => setName(e.target.value)} /></label>
+              <label className="contact-field"><span>Email</span><input type="email" required autoComplete="email" placeholder="you@example.com" value={email} onChange={(e) => setEmail(e.target.value)} /></label>
             </div>
-            <textarea
-              required
-              rows={5}
-              placeholder="Your message"
-              value={message}
-              onChange={(e) => setMessage(e.target.value)}
-              className="w-full rounded-lg border border-line bg-bg-elevated px-4 py-3 text-sm text-ink placeholder:text-ink-dim outline-none focus:border-accent-cyan"
-            />
+            <label className="contact-field"><span>What are you thinking about?</span><textarea required rows={5} placeholder="A project, a question, an interesting problem…" value={message} onChange={(e) => setMessage(e.target.value)} /></label>
 
             {status === "error" && (
               <p className="text-sm text-red-400">{errorMessage}</p>
@@ -96,19 +88,14 @@ export default function Contact() {
             <button
               type="submit"
               disabled={status === "sending"}
-              onPointerMove={(e) => {
-                const r = e.currentTarget.getBoundingClientRect();
-                const x = (e.clientX - (r.left + r.width / 2)) * 0.25;
-                const y = (e.clientY - (r.top + r.height / 2)) * 0.25;
-                e.currentTarget.style.transform = `translate(${x}px, ${y}px)`;
-              }}
-              onPointerLeave={(e) => { e.currentTarget.style.transform = "translate(0,0)"; }}
-              className="rounded-lg bg-ink px-6 py-3 text-sm font-medium text-bg transition-[transform,background-color] duration-200 ease-out hover:bg-accent-cyan disabled:cursor-not-allowed disabled:opacity-60"
+              className="contact-submit rounded-full px-5 py-3 text-[10px] font-medium uppercase tracking-[.12em] transition-[transform,background-color] duration-200 ease-out disabled:cursor-not-allowed disabled:opacity-60"
             >
               {status === "sending" ? "Sending…" : "Send message"}
+              <Send size={14} />
             </button>
           </form>
         )}
+        </div>
       </div>
     </section>
   );

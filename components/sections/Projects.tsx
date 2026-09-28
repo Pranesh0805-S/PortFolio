@@ -1,133 +1,78 @@
-"use client";
-
-import { useRef, useState } from "react";
 import Image from "next/image";
-import { motion, useScroll, useTransform } from "framer-motion";
-import { projects } from "@/data/projects";
+import { ArrowUpRight, Code2 } from "lucide-react";
+import type { CSSProperties } from "react";
+import { projects, type Project } from "@/data/projects";
 
-function ProjectThumb({
-  image, name, category, accent, hasUI,
-}: { image?: string; name: string; category: string; accent: string; hasUI: boolean }) {
-  const [failed, setFailed] = useState(false);
-
-  if (image && !failed) {
+function ProjectArtwork({ project, className = "" }: { project: Project; className?: string }) {
+  const style = { "--project-accent": project.accent } as CSSProperties;
+  if (project.image) {
     return (
-      <div className="relative h-48 w-full overflow-hidden rounded-2xl bg-bg">
-        <Image
-          src={image}
-          alt={`${name} screenshot`}
-          fill
-          sizes="(min-width: 768px) 40vw, 100vw"
-          className="object-cover"
-          onError={() => setFailed(true)}
-        />
+      <div className={`work-artwork work-artwork-image ${className}`} style={style}>
+        <Image src={project.image} alt={`${project.name} interface`} fill sizes="(min-width: 1024px) 50vw, 100vw" className="object-cover" />
+        <span className="work-artwork-caption">{project.category}</span>
       </div>
     );
   }
 
   return (
-    <div
-      className="flex h-48 w-full items-end justify-between rounded-2xl p-5"
-      style={{ background: `linear-gradient(135deg, ${accent}1a, transparent 70%)` }}
-    >
-      <span className="font-mono text-[10px] uppercase tracking-widest text-ink-dim">
-        {hasUI ? "no live preview yet" : "backend / CLI project"}
-      </span>
-      <span className="font-mono text-xs" style={{ color: accent }}>{category}</span>
+    <div className={`work-artwork work-artwork-generated ${className}`} style={style} aria-hidden="true">
+      <span className="work-artwork-caption">{project.category}</span>
+      <div className="work-artwork-mark"><i /><i /><i /><i /><b>+</b></div>
+      <span className="work-artwork-foot">{project.stack.slice(0, 3).join(" / ")}</span>
     </div>
   );
 }
 
-function ProjectCard({
-  project, index, total, progress,
-}: { project: (typeof projects)[number]; index: number; total: number; progress: any }) {
-  const targetScale = 1 - (total - 1 - index) * 0.03;
-  const scale = useTransform(progress, [0, 1], [1, targetScale]);
-
+function WorkLinks({ project }: { project: Project }) {
   return (
-    <div className="sticky top-24 md:top-32" style={{ top: `${96 + index * 28}px` }}>
-      <motion.div
-        style={{ scale }}
-        className="origin-top rounded-[40px] border-2 border-line-strong bg-bg-elevated p-5 sm:p-7 md:p-8"
-      >
-        <div className="mb-6 flex flex-wrap items-start justify-between gap-4">
-          <div className="flex items-baseline gap-4">
-            <span className="text-4xl font-black text-line-strong sm:text-5xl">
-              {String(index + 1).padStart(2, "0")}
-            </span>
-            <div>
-              <p className="font-mono text-xs uppercase tracking-widest text-accent-cyan">
-                {project.category}
-              </p>
-              <h3 className="mt-1 text-2xl font-semibold text-ink sm:text-3xl">
-                {project.name}
-              </h3>
-            </div>
-          </div>
-          <div className="flex gap-3">
-            <a
-              href={project.github}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="rounded-full border-2 border-line-strong px-5 py-2 text-xs font-medium uppercase tracking-widest text-ink transition-colors hover:border-accent-cyan hover:text-accent-cyan"
-            >
-              GitHub
-            </a>
-            {project.live && (
-              <a
-                href={project.live}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="rounded-full bg-ink px-5 py-2 text-xs font-medium uppercase tracking-widest text-bg transition-colors hover:bg-accent-cyan"
-              >
-                Live
-              </a>
-            )}
-          </div>
-        </div>
-
-        <p className="mb-6 max-w-2xl text-sm leading-relaxed text-ink-dim">
-          {project.description}
-        </p>
-
-        <ProjectThumb
-          image={project.image}
-          name={project.name}
-          category={project.category}
-          accent={project.accent}
-          hasUI={project.hasUI}
-        />
-
-        <div className="mt-5 flex flex-wrap gap-2">
-          {project.stack.map((tech) => (
-            <span key={tech} className="rounded-md bg-line px-2.5 py-1 text-xs text-ink-dim">
-              {tech}
-            </span>
-          ))}
-        </div>
-      </motion.div>
+    <div className="work-links">
+      <a href={project.github} target="_blank" rel="noopener noreferrer"><Code2 size={15} /> Source</a>
+      {project.live && <a href={project.live} target="_blank" rel="noopener noreferrer">Live project <ArrowUpRight size={14} /></a>}
     </div>
   );
 }
 
 export default function Projects() {
-  const ref = useRef<HTMLDivElement>(null);
-  const { scrollYProgress } = useScroll({ target: ref, offset: ["start start", "end end"] });
+  const [featured, ...rest] = projects;
 
   return (
-    <section id="projects" className="border-b border-line py-24">
-      <div className="mx-auto max-w-4xl px-6 sm:px-10">
-        <h2 className="gradient-heading mb-16 text-center text-4xl font-black uppercase tracking-tight sm:text-5xl">
-          Project
-        </h2>
-      </div>
+    <section id="projects" className="chapter work-section">
+      <div className="chapter-shell">
+        <div className="chapter-heading">
+          <span className="chapter-index">05 <i /> SELECTED WORK</span>
+          <span className="chapter-coordinate">A small sample of what I like to solve.</span>
+        </div>
+        <div className="work-intro">
+          <h2>Built to be <em>useful.</em></h2>
+          <p>Each project started with a real friction point. The details are different; the goal is always to leave things clearer than I found them.</p>
+        </div>
 
-      <div ref={ref} className="relative mx-auto max-w-4xl px-6 sm:px-10">
-        {projects.map((project, i) => (
-          <div key={project.slug} id={i === 0 ? "envoy-mail" : undefined} className="mb-8 scroll-mt-28" style={{ height: "85vh" }}>
-            <ProjectCard project={project} index={i} total={projects.length} progress={scrollYProgress} />
+        <article className="work-featured" id="envoy-mail">
+          <div className="work-feature-copy">
+            <div className="work-number"><span>01</span><i /> FEATURED PROJECT</div>
+            <p className="work-category">{featured.category}</p>
+            <h3>{featured.name}</h3>
+            <p className="work-description">{featured.description}</p>
+            <ul className="work-tech">{featured.stack.map((tool) => <li key={tool}>{tool}</li>)}</ul>
+            <WorkLinks project={featured} />
           </div>
-        ))}
+          <ProjectArtwork project={featured} className="work-feature-artwork" />
+        </article>
+
+        <div className="work-grid">
+          {rest.map((project, index) => (
+            <article className="work-card" key={project.slug}>
+              <ProjectArtwork project={project} className="work-card-artwork" />
+              <div className="work-card-body">
+                <div className="work-card-heading"><span>{String(index + 2).padStart(2, "0")} / {project.category}</span><ArrowUpRight size={15} aria-hidden="true" /></div>
+                <h3>{project.name}</h3>
+                <p>{project.description}</p>
+                <ul className="work-tech">{project.stack.map((tool) => <li key={tool}>{tool}</li>)}</ul>
+                <WorkLinks project={project} />
+              </div>
+            </article>
+          ))}
+        </div>
       </div>
     </section>
   );

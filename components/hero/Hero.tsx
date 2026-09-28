@@ -1,126 +1,70 @@
-"use client";
-
-import { motion } from "framer-motion";
-import { ArrowDown, ArrowUpRight } from "lucide-react";
-import { projects } from "@/data/projects";
-import OrbitingTools from "./OrbitingTools";
-
-const featured = projects[0];
+import { ArrowDown, ArrowRight, ArrowUpRight } from "lucide-react";
 
 export default function Hero() {
   return (
-    <section id="top" className="hero-shell relative flex min-h-[100svh] items-center overflow-hidden">
-      <div aria-hidden className="hero-orbit hero-orbit-one" />
-      <div aria-hidden className="hero-orbit hero-orbit-two" />
-      <div aria-hidden className="hero-stargazers"><i /><i /><i /><i /><i /><i /><i /><i /><i /><i /><i /><i /></div>
-      <div className="hero-grid relative z-10 mx-auto grid w-full max-w-[1440px] items-center gap-4 px-6 pb-24 pt-32 sm:px-10 lg:grid-cols-[1fr_0.9fr] lg:gap-0 lg:px-14 xl:px-20">
-        <div className="hero-copy relative z-20 md:py-12">
-          <motion.div
-            initial={{ opacity: 0, y: 14 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, delay: 0.12 }}
-            className="mb-7 inline-flex items-center gap-2.5 rounded-full border border-[#57433e]/15 bg-[#fffaf4]/55 px-4 py-2 shadow-[0_8px_30px_rgba(81,56,43,0.06)] backdrop-blur-sm"
-          >
-            <span className="relative flex h-2 w-2">
-              <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-[#a65e54] opacity-50" />
-              <span className="relative inline-flex h-2 w-2 rounded-full bg-[#a65e54]" />
-            </span>
-            <span className="font-mono text-[10px] uppercase tracking-[0.17em] text-[#64564e] sm:text-[11px]">
-              Available for opportunities
-            </span>
-          </motion.div>
+    <section id="top" className="hero-shell relative isolate flex min-h-[100svh] items-center overflow-hidden">
+      <video className="hero-video" autoPlay loop muted playsInline preload="none" aria-hidden="true">
+        <source src="https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260809_012548_ef22562c-c0ae-4816-ad9d-f8922af4e6a7.mp4" type="video/mp4" />
+      </video>
+      <div className="hero-video-shade" aria-hidden="true" />
+      <div className="hero-grain" aria-hidden="true" />
 
-          <motion.p
-            initial={{ opacity: 0, y: 16 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, delay: 0.2 }}
-            className="mb-1 font-mono text-[11px] uppercase tracking-[0.24em] text-[#79675c] sm:text-xs"
-          >
-            Full-stack developer <span className="px-1 text-[#b17b6c]">/</span> AI builder
-          </motion.p>
-
-          <motion.h1
-            initial={{ opacity: 0, y: 30, filter: "blur(8px)" }}
-            animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
-            transition={{ duration: 0.9, delay: 0.27, ease: [0.22, 1, 0.36, 1] }}
-            className="hero-title mt-4 text-[clamp(4.5rem,12.4vw,11rem)] font-semibold leading-[0.77] tracking-[-0.09em] text-[#302522]"
-          >
-            Pranesh<span className="hero-period">.</span>
-            <span className="hero-title-second mt-3 block pl-[0.07em] text-[0.61em] font-light leading-[0.95] tracking-[-0.075em] text-[#70564f] sm:mt-5">
-              makes things.
-            </span>
-          </motion.h1>
-
-          <motion.p
-            initial={{ opacity: 0, y: 18 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, delay: 0.43 }}
-            className="mt-8 max-w-[430px] text-[15px] leading-[1.8] text-[#665a51] sm:mt-9 sm:text-base"
-          >
-            I&apos;m a developer and computer science student turning curious ideas into useful,
-            thoughtfully crafted software — with a little help from AI.
-          </motion.p>
-
-          <motion.div
-            initial={{ opacity: 0, y: 16 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.65, delay: 0.56 }}
-            className="mt-8 flex flex-wrap items-center gap-3 sm:mt-9"
-          >
-            <a href="#projects" className="hero-primary group inline-flex items-center gap-3 rounded-full bg-[#382a28] px-5 py-3.5 text-[11px] font-medium uppercase tracking-[0.13em] text-[#fff9f1] shadow-[0_9px_22px_rgba(62,43,39,0.18)] transition duration-300 hover:-translate-y-0.5 hover:bg-[#5a3a48] sm:px-6">
-              Explore my work
-              <ArrowUpRight size={15} className="transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+      <div className="hero-layout relative z-10 mx-auto grid w-full max-w-[1440px] items-center px-6 sm:px-10 lg:px-14 xl:px-20">
+        <div className="hero-copy">
+          <p className="hero-eyebrow"><span className="hero-eyebrow-dot" /> Developer / AI builder <i /> Coimbatore, India</p>
+          <h1 className="hero-title">
+            <span>Turning ideas</span>
+            <em>into software.</em>
+          </h1>
+          <p className="hero-description">
+            I&apos;m Pranesh — a full-stack developer and BCA student making useful products, exploring practical AI, and learning by shipping the real thing.
+          </p>
+          <div className="hero-actions">
+            <a href="#projects" className="hero-primary group">
+              <span>Explore my work</span>
+              <span className="hero-primary-arrow"><ArrowRight size={17} /></span>
             </a>
-            <a href="#contact" className="inline-flex items-center gap-2 rounded-full border border-[#5d4942]/20 bg-[#fff9f1]/35 px-5 py-3 text-[11px] font-medium uppercase tracking-[0.13em] text-[#54453e] transition duration-300 hover:border-[#5d4942]/45 hover:bg-[#fff9f1]/75">
-              Say hello <span aria-hidden className="text-[#a65e54]">↗</span>
-            </a>
-          </motion.div>
-
-          <motion.div
-            initial={{ opacity: 0, y: 12 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.65, delay: 0.68 }}
-            className="hero-featured"
-          >
-            <span className="hero-featured-number">01</span>
-            <div className="hero-featured-copy">
-              <span className="hero-featured-kicker">Current focus · {featured.category}</span>
-              <a href="#envoy-mail" className="hero-featured-name">{featured.name}<span> · Explore project</span></a>
-            </div>
-            <a href={featured.github} target="_blank" rel="noopener noreferrer" aria-label="Open Envoy Mail on GitHub" className="hero-featured-github">GitHub <ArrowUpRight size={13} /></a>
-          </motion.div>
-
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 0.8, delay: 0.8 }}
-            className="mt-11 flex items-center gap-3 text-[#796c61]"
-          >
-            <div className="flex -space-x-2" aria-hidden>
-              <span className="h-7 w-7 rounded-full border-2 border-[#e8ded2] bg-[#a87d72]" />
-              <span className="h-7 w-7 rounded-full border-2 border-[#e8ded2] bg-[#d9ab7d]" />
-              <span className="flex h-7 w-7 items-center justify-center rounded-full border-2 border-[#e8ded2] bg-[#55404f] text-[9px] text-white">PS</span>
-            </div>
-            <span className="font-mono text-[9px] uppercase tracking-[0.13em] sm:text-[10px]">Curious by nature · Coimbatore, IN</span>
-          </motion.div>
+            <a href="#about" className="hero-secondary">A little about me <ArrowDown size={14} /></a>
+          </div>
+          <div className="hero-meta">
+            <span><b>05</b> selected builds</span>
+            <span className="hero-meta-rule" />
+            <span><i /> Open to opportunities</span>
+          </div>
         </div>
 
-        <motion.div
-          initial={{ opacity: 0, scale: 0.91, y: 24 }}
-          animate={{ opacity: 1, scale: 1, y: 0 }}
-          transition={{ duration: 1.1, delay: 0.24, ease: [0.22, 1, 0.36, 1] }}
-          className="hero-art relative mx-auto -mt-3 h-[310px] w-full max-w-[540px] sm:h-[430px] md:mt-0 md:h-[580px]"
-        >
-          <div aria-hidden className="hero-art-halo absolute left-1/2 top-1/2 h-[78%] w-[82%] -translate-x-1/2 -translate-y-1/2 rounded-full" />
-          <OrbitingTools />
-        </motion.div>
+        <div className="hero-network" aria-hidden="true">
+          <div className="network-heading"><span>FIELD NOTE / 001</span><span>IDEA → IMPACT</span></div>
+          <svg className="network-svg" viewBox="0 0 640 560" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+              <linearGradient id="trace-a" x1="91" y1="98" x2="548" y2="452" gradientUnits="userSpaceOnUse">
+                <stop stopColor="#D6FF71" stopOpacity=".05" /><stop offset=".52" stopColor="#D6FF71" stopOpacity=".78" /><stop offset="1" stopColor="#D6FF71" stopOpacity=".08" />
+              </linearGradient>
+              <radialGradient id="node-glow"><stop stopColor="#E3FF9E" /><stop offset="1" stopColor="#B9E85C" stopOpacity=".05" /></radialGradient>
+            </defs>
+            <path className="network-grid-line" d="M80 0V560M160 0V560M240 0V560M320 0V560M400 0V560M480 0V560M560 0V560M0 80H640M0 160H640M0 240H640M0 320H640M0 400H640M0 480H640" />
+            <path className="network-trace network-trace-a" d="M62 399C155 399 137 164 239 164C328 164 293 343 386 343C480 343 437 102 579 102" />
+            <path className="network-trace network-trace-b" d="M101 95C174 95 181 277 280 277C372 277 350 452 446 452C520 452 508 279 593 279" />
+            <path className="network-trace network-trace-c" d="M98 510C209 510 182 356 281 356C374 356 358 181 460 181C514 181 529 222 565 222" />
+            <path className="network-trace network-trace-d" d="M40 260C130 260 117 459 228 459C321 459 302 93 420 93C500 93 483 375 604 375" />
+            <circle className="network-node network-node-a" cx="239" cy="164" r="6" />
+            <circle className="network-node network-node-b" cx="386" cy="343" r="8" />
+            <circle className="network-node network-node-c" cx="280" cy="277" r="5" />
+            <circle className="network-node network-node-d" cx="460" cy="181" r="7" />
+            <circle className="network-node network-node-e" cx="228" cy="459" r="5" />
+            <circle className="network-node network-node-f" cx="420" cy="93" r="6" />
+            <circle cx="386" cy="343" r="31" fill="url(#node-glow)" opacity=".22" />
+          </svg>
+          <div className="network-core"><span>BUILD / 01</span><strong>Make it<br /><i>matter.</i></strong><b>↗</b></div>
+          <div className="network-tag network-tag-a"><i /> SYSTEMS THINKING</div>
+          <div className="network-tag network-tag-b">CODE WITH INTENT <i /></div>
+          <div className="network-footer"><span>01 / 03</span><span>THOUGHT → PROTOTYPE → PRODUCT</span></div>
+        </div>
       </div>
 
-      <a href="#about" className="absolute bottom-7 left-6 z-20 hidden items-center gap-3 font-mono text-[9px] uppercase tracking-[0.18em] text-[#77665a] transition-colors hover:text-[#392b29] sm:flex sm:left-10 md:left-14 lg:left-20">
-        <span className="flex h-8 w-8 items-center justify-center rounded-full border border-[#6c5149]/20"><ArrowDown size={13} /></span>
-        Scroll to explore
-      </a>
-      <span className="absolute bottom-9 right-6 hidden font-mono text-[9px] uppercase tracking-[0.15em] text-[#8d7c6e] md:block lg:right-20">01 — Selected work</span>
+      <a href="#about" className="hero-scroll"><span><ArrowDown size={14} /></span> Scroll to explore</a>
+      <span className="hero-index">PORTFOLIO / 2026</span>
+      <a className="hero-corner-link" href="https://github.com/Pranesh0805-S" target="_blank" rel="noopener noreferrer" aria-label="Visit Pranesh's GitHub profile"><ArrowUpRight size={15} /></a>
     </section>
   );
 }
