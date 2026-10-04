@@ -9,12 +9,12 @@ export default function Experience() {
     <section id="experience" className="chapter experience-section">
       <div className="chapter-shell">
         <div className="chapter-heading">
-          <span className="chapter-index">03 <i /> THE PATH SO FAR</span>
-          <span className="chapter-coordinate">Learning by making, helping, showing up.</span>
+          <span className="chapter-index">03 <i /> EDUCATION & COMMUNITY</span>
+          <span className="chapter-coordinate">Academic background and community participation.</span>
         </div>
         <div className="experience-intro">
-          <h2>Learning<br /><em>in motion.</em></h2>
-          <p>My path so far is a mix of formal study, college projects, and being curious enough to show up where people are building.</p>
+          <h2>Education<br /><em>and beyond.</em></h2>
+          <p>My BCA studies give me a foundation in computer applications, alongside hands-on project work and community participation.</p>
         </div>
         <div className="experience-list">
           {experience.map((entry, index) => (

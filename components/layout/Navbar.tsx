@@ -4,10 +4,9 @@ import { useState } from "react";
 import { ArrowUpRight, Menu, X } from "lucide-react";
 
 const LINKS = [
+  { href: "#projects", label: "Work" },
   { href: "#about", label: "About" },
-  { href: "#stack", label: "Toolkit" },
-  { href: "#experience", label: "Journey" },
-  { href: "#projects", label: "Projects" },
+  { href: "#stack", label: "Skills" },
   { href: "#resume", label: "Resume" },
 ];
 
@@ -19,7 +18,7 @@ export default function Navbar() {
         <nav className="nav-shell mx-auto flex max-w-[1440px] items-center justify-between">
           <a href="#top" className="brand-link flex items-center gap-3" aria-label="Pranesh, home">
             <span className="brand-mark">p<span>.</span></span>
-            <span className="nav-name">PRANESH S <i /> DIGITAL CRAFT</span>
+            <span className="nav-name">PRANESH S <i /> FULL-STACK DEVELOPER</span>
           </a>
 
           <ul className="nav-links hidden items-center gap-7 md:flex lg:gap-9">
@@ -31,7 +30,7 @@ export default function Navbar() {
           </ul>
 
           <a href="#contact" className="nav-cta hidden items-center gap-3 md:inline-flex">
-            <span>Start a conversation</span><ArrowUpRight size={15} />
+            <span>Available for work</span><ArrowUpRight size={15} />
           </a>
           <div className="nav-actions md:hidden">
             <button type="button" aria-label={open ? "Close navigation" : "Open navigation"} aria-expanded={open} onClick={() => setOpen(!open)} className="flex h-10 w-10 items-center justify-center transition md:hidden">
@@ -47,7 +46,7 @@ export default function Navbar() {
           {LINKS.map((link, i) => (
             <a key={link.href} href={link.href} onClick={() => setOpen(false)} style={{ transitionDelay: open ? `${i * 45}ms` : "0ms" }} className={`mobile-nav-link border-b py-3 text-[21px] tracking-[-0.045em] transition-all ${open ? "translate-x-0 opacity-100" : "-translate-x-2 opacity-0"}`}>{link.label}</a>
           ))}
-          <a href="#contact" onClick={() => setOpen(false)} className="mobile-nav-cta mt-5 inline-flex items-center justify-between py-4 text-sm">Start a conversation <ArrowUpRight size={16} /></a>
+          <a href="#contact" onClick={() => setOpen(false)} className="mobile-nav-cta mt-5 inline-flex items-center justify-between py-4 text-sm">Contact me <ArrowUpRight size={16} /></a>
         </nav>
       </div>
     </>

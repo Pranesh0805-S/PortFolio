@@ -50,11 +50,11 @@ export default function Contact() {
             <span /> Get in touch
           </p>
           <h2 className="mt-5 text-4xl font-medium tracking-tight sm:text-5xl">
-            Have a good problem?
-            <span>Let&apos;s build it together.</span>
+            Looking for a developer
+            <span>to build your next product?</span>
           </h2>
           <p className="mt-5 max-w-md text-sm leading-7 text-ink-dim sm:text-base">
-            I&apos;m open to full-stack and AI engineering roles, collaborations, and ambitious ideas. Tell me what you&apos;re working on.
+            I&apos;m open to full-time roles, internships, freelance projects, and engineering collaborations. Based in Coimbatore, India; open to remote and on-site opportunities.
           </p>
           <a className="contact-email mt-8 inline-flex items-center gap-3" href="mailto:pranesh8506s@gmail.com">
             <span><Mail size={16} /></span>

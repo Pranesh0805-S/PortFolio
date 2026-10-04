@@ -13,11 +13,11 @@ export default function Home() {
     <main>
       <Navbar />
       <Hero />
-      <AboutBento />
+      <Projects />
       <TechStack />
       <Experience />
+      <AboutBento />
       <ResumeSection />
-      <Projects />
       <Contact />
       <Footer />
     </main>

@@ -10,9 +10,9 @@ export default function ResumeSection() {
   return (
     <section id="resume" className="resume-section">
       <div className="resume-shell">
-        <div className="resume-index"><span>04 / QUICK REFERENCE</span><span>PRANESH S. — 2026</span></div>
+        <div className="resume-index"><span>05 / QUICK REFERENCE</span><span>PRANESH S. — 2026</span></div>
         <div className="resume-main">
-          <h2>One page.<br /><em>The whole picture.</em></h2>
+          <h2>Need the<br /><em>quick version?</em></h2>
           <div className="resume-description-block">
             <p>A concise look at what I&apos;ve studied, what I&apos;ve built, and where I&apos;m headed next.</p>
             <div className="resume-actions">

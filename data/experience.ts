@@ -11,7 +11,6 @@ export const experience: ExperienceEntry[] = [
     title: "Bachelor of Computer Application",
     place: "Bishop Appasamy College of Arts and Science, Coimbatore",
     points: [
-      "CGPA 7.3/10.",
       "Full-stack development with Node.js, Express, MongoDB, and React/Vite.",
       "Building AI/LLM-integrated products using the Anthropic API and Supabase.",
     ],
@@ -27,11 +26,5 @@ export const experience: ExperienceEntry[] = [
     title: "Attendee, Google Cloud Community Day",
     place: "Coimbatore",
     points: ["Attended sessions on cloud infrastructure and deployment."],
-  },
-  {
-    period: "2021 - 2023",
-    title: "Higher Secondary",
-    place: "CMS Matric Higher Secondary School, Coimbatore",
-    points: ["HSC Percentage: 61."],
   },
 ];

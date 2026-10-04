@@ -11,31 +11,32 @@ export default function Hero() {
 
       <div className="hero-layout relative z-10 mx-auto grid w-full max-w-[1440px] items-center px-6 sm:px-10 lg:px-14 xl:px-20">
         <div className="hero-copy">
-          <p className="hero-eyebrow"><span className="hero-eyebrow-dot" /> Developer / AI builder <i /> Coimbatore, India</p>
+          <p className="hero-eyebrow"><span className="hero-eyebrow-dot" /> Full-stack developer <i /> Coimbatore, India</p>
           <h1 className="hero-title">
-            <span>Turning ideas</span>
-            <em>into software.</em>
+            <span>Full-stack</span>
+            <em>developer.</em>
           </h1>
           <p className="hero-description">
-            I&apos;m Pranesh — a full-stack developer and BCA student making useful products, exploring practical AI, and learning by shipping the real thing.
+            I build practical web apps and AI-powered tools that simplify everyday workflows, using React, Node.js, Python, and modern APIs.
           </p>
           <div className="hero-actions">
             <a href="#projects" className="hero-primary group">
               <span>Explore my work</span>
               <span className="hero-primary-arrow"><ArrowRight size={17} /></span>
             </a>
-            <a href="#about" className="hero-secondary">A little about me <ArrowDown size={14} /></a>
+            <a href="/Resume.pdf" target="_blank" rel="noopener noreferrer" className="hero-secondary">View resume <ArrowUpRight size={14} /></a>
           </div>
           <div className="hero-meta">
-            <span><b>05</b> selected builds</span>
+            <span><b>06</b> selected builds</span>
             <span className="hero-meta-rule" />
-            <span><i /> Open to opportunities</span>
+            <span><i /> Full-time · internships · freelance</span>
+            <span>Remote / on-site</span>
           </div>
         </div>
 
-        <div className="hero-network" aria-hidden="true">
-          <div className="network-heading"><span>FIELD NOTE / 001</span><span>IDEA → IMPACT</span></div>
-          <svg className="network-svg" viewBox="0 0 640 560" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <div className="hero-network">
+          <div className="network-heading"><span>CURRENTLY FEATURED</span><span>PROJECT / 01</span></div>
+          <svg className="network-svg" viewBox="0 0 640 560" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
             <defs>
               <linearGradient id="trace-a" x1="91" y1="98" x2="548" y2="452" gradientUnits="userSpaceOnUse">
                 <stop stopColor="#D6FF71" stopOpacity=".05" /><stop offset=".52" stopColor="#D6FF71" stopOpacity=".78" /><stop offset="1" stopColor="#D6FF71" stopOpacity=".08" />
@@ -55,10 +56,10 @@ export default function Hero() {
             <circle className="network-node network-node-f" cx="420" cy="93" r="6" />
             <circle cx="386" cy="343" r="31" fill="url(#node-glow)" opacity=".22" />
           </svg>
-          <div className="network-core"><span>BUILD / 01</span><strong>Make it<br /><i>matter.</i></strong><b>↗</b></div>
-          <div className="network-tag network-tag-a"><i /> SYSTEMS THINKING</div>
-          <div className="network-tag network-tag-b">CODE WITH INTENT <i /></div>
-          <div className="network-footer"><span>01 / 03</span><span>THOUGHT → PROTOTYPE → PRODUCT</span></div>
+          <a href="#agent-guard" className="network-core"><span>AI SECURITY / TOOLING</span><strong>Agent<br /><i>Guard</i></strong><b>↗</b></a>
+          <div className="network-tag network-tag-a"><i /> DOMAIN ALLOWLIST</div>
+          <div className="network-tag network-tag-b">HUMAN APPROVAL <i /></div>
+          <div className="network-footer"><span>NODE.JS / EXPRESS</span><span>GUARD → REVIEW → APPROVE</span></div>
         </div>
       </div>
 
