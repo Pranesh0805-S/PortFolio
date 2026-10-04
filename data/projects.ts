@@ -71,4 +71,17 @@ export const projects: Project[] = [
     hasUI: true,
     image: "/projects/jobalert-bot.png",
   },
+  {
+    slug: "Flow State",
+    name: "Flow State",
+    category: "Full Stack / Automation",
+    description:
+      "Flowstate is a productivity app for organizing tasks, tracking progress, and planning your workflow across web and Android.",
+    stack: ["next.js", "React Native", "python", "TypeScript", "postgreSQL", "SQLite", "Android SDK", "Gradle"],
+    accent: "#72dcf4",
+    github: "https://github.com/Pranesh0805-S/FlowState",
+    live: "https://flowstate-pranesh0805.vercel.app/",
+    hasUI: true,
+    image: "/projects/flowstate.png",
+  },
 ];
