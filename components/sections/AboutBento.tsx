@@ -1,4 +1,5 @@
 import { ArrowUpRight } from "lucide-react";
+import Reveal from "@/components/ui/Reveal";
 
 const SOCIALS = [
   { label: "GitHub", detail: "Code & experiments", href: "https://github.com/Pranesh0805-S" },
@@ -17,28 +18,28 @@ export default function AboutBento() {
     <section id="about" className="chapter about-section">
       <div className="chapter-shell">
         <div className="chapter-heading">
-          <span className="chapter-index">04 <i /> PROFILE</span>
-          <span className="chapter-coordinate">11.0168° N / 76.9558° E</span>
+          <span className="chapter-index">04 <i /> A LITTLE ABOUT ME</span>
+          <span className="chapter-coordinate">COIMBATORE, INDIA / 11°01′ N</span>
         </div>
 
-        <div className="about-story">
-          <h2>Developer based in <em>Coimbatore, India.</em></h2>
+        <Reveal className="about-story">
+          <h2>I&apos;m Pranesh.<br /><em>I build useful software.</em></h2>
           <div className="about-intro">
             <p>I&apos;m Pranesh, a BCA student and full-stack developer focused on web applications, AI-powered products, automation, and developer tools.</p>
             <p>I enjoy turning rough ideas into working software and explaining the engineering choices behind it. I&apos;m looking for full-time roles, internships, freelance work, and thoughtful engineering collaborations.</p>
             <a href="mailto:pranesh8506s@gmail.com" className="text-link">Say hello <ArrowUpRight size={14} /></a>
           </div>
-        </div>
+        </Reveal>
 
-        <div className="about-facts" aria-label="A few facts">
+        <Reveal className="about-facts">
           <div><span>01 / ROLE</span><strong>Full-stack</strong><p>Developer / AI builder</p></div>
           <div><span>02 / FOCUS</span><strong>Web + AI</strong><p>Automation and developer tools</p></div>
           <div><span>03 / BASED IN</span><strong>India</strong><p>Coimbatore, Tamil Nadu</p></div>
           <div><span>04 / OPEN TO</span><strong>Work</strong><p>Full-time · Internships · Freelance</p></div>
-        </div>
+        </Reveal>
 
         <div className="about-approach">
-            <div className="approach-heading"><span className="chapter-index">WHAT I ENJOY BUILDING</span><p>Products with clear problems<br /><em>and thoughtful engineering.</em></p></div>
+            <div className="approach-heading"><span className="chapter-index">WHAT I ENJOY BUILDING</span><p>Things that make<br /><em>work feel simpler.</em></p></div>
           <div className="approach-list">
             {APPROACH.map((item) => (
               <article className="approach-item" key={item.number}>

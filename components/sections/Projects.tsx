@@ -1,7 +1,9 @@
 import Image from "next/image";
+import Link from "next/link";
 import { ArrowUpRight, Code2 } from "lucide-react";
 import type { CSSProperties } from "react";
 import { projects, type Project } from "@/data/projects";
+import Reveal from "@/components/ui/Reveal";
 
 function ProjectArtwork({ project, className = "" }: { project: Project; className?: string }) {
   const style = { "--project-accent": project.accent } as CSSProperties;
@@ -23,14 +25,14 @@ function ProjectArtwork({ project, className = "" }: { project: Project; classNa
 
 function WorkLinks({ project, caseStudy = false }: { project: Project; caseStudy?: boolean }) {
   return <div className="work-links">
-    {caseStudy && <a href={`/projects/${project.slug}`} className="case-link">View case study <ArrowUpRight size={14} /></a>}
+    <Link href={`/projects/${project.slug}`} className="case-link">{caseStudy ? "View case study" : "Explore project"} <ArrowUpRight size={14} /></Link>
     <a href={project.github} target="_blank" rel="noopener noreferrer"><Code2 size={14} /> View GitHub</a>
     {project.live && <a href={project.live} target="_blank" rel="noopener noreferrer">Live demo <ArrowUpRight size={14} /></a>}
   </div>;
 }
 
 function FeaturedProject({ project, index }: { project: Project; index: number }) {
-  return <article className={`work-featured ${index % 2 ? "work-featured-reverse" : ""}`} id={project.slug}>
+  return <Reveal className={`work-feature-shell ${index % 2 ? "work-feature-reverse-shell" : ""}`} delay={index * 0.08}><article className={`work-featured ${index % 2 ? "work-featured-reverse" : ""}`} id={project.slug}>
     <div className="work-feature-copy">
       <div className="work-number"><span>{String(index + 1).padStart(2, "0")}</span><i /> FEATURED PROJECT</div>
       <p className="work-category">{project.category}</p>
@@ -41,7 +43,7 @@ function FeaturedProject({ project, index }: { project: Project; index: number }
       <WorkLinks project={project} caseStudy={project.slug === "agent-guard"} />
     </div>
     <ProjectArtwork project={project} className="work-feature-artwork" />
-  </article>;
+  </article></Reveal>;
 }
 
 export default function Projects() {
@@ -49,15 +51,16 @@ export default function Projects() {
   const additional = projects.slice(3);
   return <section id="projects" className="chapter work-section">
     <div className="chapter-shell">
-      <div className="chapter-heading"><span className="chapter-index">01 <i /> SELECTED WORK</span><span className="chapter-coordinate">Products, tools, and experiments.</span></div>
-      <div className="work-intro"><h2>Built to be <em>useful.</em></h2><p>Start with the problem, then follow the engineering decisions behind each build.</p></div>
+      <div className="chapter-heading"><span className="chapter-index">01 <i /> SELECTED WORK</span><span className="chapter-coordinate">A few projects, each built around a real problem.</span></div>
+      <Reveal className="work-intro"><div><p className="section-kicker">PROJECTS / 2023—26</p><h2>Proof of<br /><em>what I build.</em></h2></div><p>Explore the interfaces, systems, and decisions behind my recent work.</p></Reveal>
       <div className="featured-work-list">{featured.map((project, index) => <FeaturedProject key={project.slug} project={project} index={index} />)}</div>
       <div className="additional-work-heading"><span className="chapter-index">MORE BUILDS</span><span>Smaller experiments and useful tools</span></div>
-      <div className="work-grid work-grid-additional">{additional.map((project, index) => <article className="work-card" key={project.slug}>
+      <div className="work-grid work-grid-additional">{additional.map((project, index) => <Reveal className="work-card" key={project.slug} delay={index * 0.06}>
         <ProjectArtwork project={project} className="work-card-artwork" />
         <div className="work-card-body"><div className="work-card-heading"><span>{String(index + 4).padStart(2, "0")} / {project.category}</span><ArrowUpRight size={15} aria-hidden="true" /></div>
           <h3>{project.name}</h3><p>{project.description}</p><ul className="work-tech">{project.stack.slice(0, 4).map((tool) => <li key={tool}>{tool}</li>)}</ul><WorkLinks project={project} />
-        </div></article>)}</div>
+        </div></Reveal>)}</div>
+      <Link className="section-more-link" href="/work">Explore all projects <ArrowUpRight size={16} /></Link>
     </div>
   </section>;
 }

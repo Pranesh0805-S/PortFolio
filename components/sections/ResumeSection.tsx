@@ -1,4 +1,5 @@
 import { ArrowDownToLine, ArrowUpRight } from "lucide-react";
+import Reveal from "@/components/ui/Reveal";
 
 const DETAILS = [
   { label: "Focus", value: "Full-stack development & AI" },
@@ -9,7 +10,7 @@ const DETAILS = [
 export default function ResumeSection() {
   return (
     <section id="resume" className="resume-section">
-      <div className="resume-shell">
+      <Reveal className="resume-shell">
         <div className="resume-index"><span>05 / QUICK REFERENCE</span><span>PRANESH S. — 2026</span></div>
         <div className="resume-main">
           <h2>Need the<br /><em>quick version?</em></h2>
@@ -26,7 +27,7 @@ export default function ResumeSection() {
             <div key={item.label}><dt><span>{String(index + 1).padStart(2, "0")}</span>{item.label}</dt><dd>{item.value}</dd></div>
           ))}
         </dl>
-      </div>
+      </Reveal>
     </section>
   );
 }

@@ -1,5 +1,7 @@
 import Link from "next/link";
 import { ArrowLeft, ArrowUpRight } from "lucide-react";
+import Navbar from "@/components/layout/Navbar";
+import Footer from "@/components/layout/Footer";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -14,7 +16,7 @@ const controls = [
 ];
 
 export default function AgentGuardCaseStudy() {
-  return <main className="case-study-page">
+  return <><Navbar /><main className="case-study-page">
     <header className="case-study-nav"><Link href="/#projects"><ArrowLeft size={15} /> Back to selected work</Link><span>CASE STUDY / 01</span></header>
     <section className="case-study-hero">
       <p className="case-study-kicker">AI SECURITY / NODE.JS · EXPRESS</p>
@@ -45,5 +47,5 @@ export default function AgentGuardCaseStudy() {
       <div><h2>Layered checks for tool calls.</h2><p>The implementation combines a domain allowlist, a blind second-model review, and a human approval queue. A real agent run queued the lookalike-domain send, and approve/deny actions were exercised in the local dashboard.</p><p>An address-parsing fix was added without changing the evaluation results. The summary records 21 tests passing afterward; these checks complement the benchmark but do not expand its attack sample.</p><div className="case-study-stack"><span>NODE.JS</span><span>EXPRESS</span><span>CLAUDE API</span></div></div>
     </section>
     <section className="case-study-next"><p>Want to inspect the implementation?</p><a href="https://github.com/Pranesh0805-S/Agent-Guard" target="_blank" rel="noopener noreferrer">Read the source <ArrowUpRight size={15} /></a></section>
-  </main>;
+  </main><Footer /></>;
 }

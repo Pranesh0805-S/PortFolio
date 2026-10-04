@@ -1,26 +1,18 @@
+import { ArrowUpRight } from "lucide-react";
+import Reveal from "@/components/ui/Reveal";
+
 export default function Footer() {
   return (
     <footer className="site-footer">
-      <div className="flex flex-col items-center justify-between gap-4 px-6 text-xs sm:flex-row sm:px-10">
-        <div className="footer-identity">
-          <span className="footer-copyright">© {new Date().getFullYear()} Pranesh S.</span>
-          <span className="footer-note">Thoughtfully built in Coimbatore, India.</span>
+      <Reveal className="footer-main">
+        <div className="footer-cta"><span className="section-kicker">HAVE A PROJECT IN MIND?</span><a href="mailto:pranesh8506s@gmail.com">Let&apos;s build<br /><em>something good.</em><ArrowUpRight size={28} /></a></div>
+        <div className="footer-directory">
+          <div><span>EXPLORE</span><a href="/#top">Home</a><a href="/#about">About me</a><a href="/#projects">Selected work</a><a href="/work">All projects</a><a href="/toolkit">Toolkit</a><a href="/activity">Activity</a><a href="/#contact">Contact</a></div>
+          <div><span>ELSEWHERE</span><a href="https://github.com/Pranesh0805-S" target="_blank" rel="noopener noreferrer">GitHub ↗</a><a href="https://www.linkedin.com/in/pranesh0805/" target="_blank" rel="noopener noreferrer">LinkedIn ↗</a><a href="https://leetcode.com/u/pranesh0805-s/" target="_blank" rel="noopener noreferrer">LeetCode ↗</a></div>
         </div>
-        <div className="footer-links flex font-mono">
-          <a href="https://github.com/Pranesh0805-S" target="_blank" rel="noopener noreferrer" className="hover:text-accent-cyan">
-            GitHub
-          </a>
-          <a href="https://www.linkedin.com/in/pranesh0805/" target="_blank" rel="noopener noreferrer" className="hover:text-accent-cyan">
-            LinkedIn
-          </a>
-          <a href="https://leetcode.com/u/pranesh0805-s/" target="_blank" rel="noopener noreferrer" className="hover:text-accent-cyan">
-            LeetCode
-          </a>
-          <a href="mailto:pranesh8506s@gmail.com" className="hover:text-accent-cyan">
-            Email
-          </a>
-        </div>
-      </div>
+      </Reveal>
+      <div className="footer-marquee" aria-hidden="true"><span>PRANESH S. — FULL-STACK DEVELOPER — </span><span>PRANESH S. — FULL-STACK DEVELOPER — </span></div>
+      <div className="footer-bottom"><span>© {new Date().getFullYear()} PRANESH S.</span><span>DESIGNED & BUILT IN COIMBATORE, INDIA</span><a href="/#top">BACK TO TOP ↑</a></div>
     </footer>
   );
 }

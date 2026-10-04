@@ -405,12 +405,23 @@ a { color: inherit; }
 .case-study-next { display: flex; justify-content: space-between; align-items: center; gap: 20px; margin-top: 35px; padding: 28px 0; border-top: 1px solid rgba(25,32,27,.25); }
 .case-study-next p { margin: 0; color: #59645b; font-size: 14px; }
 .case-study-next a { display: inline-flex; align-items: center; gap: 10px; padding: 13px 16px; background: #1a241c; color: #e8eedf; font: 9px var(--font-mono); text-decoration: none; text-transform: uppercase; }
+.hero-portrait { position: relative; width: 100%; max-width: 590px; aspect-ratio: 1 / 1.02; justify-self: end; align-self: end; overflow: hidden; isolation: isolate; }
+.hero-portrait-glow { position: absolute; inset: 12% 3% 0; z-index: -1; background: radial-gradient(ellipse at 52% 60%, rgba(211,244,119,.12), rgba(211,244,119,.035) 42%, transparent 72%); }
+.hero-portrait-image { object-fit: contain; object-position: center bottom; filter: drop-shadow(0 18px 54px rgba(0,0,0,.22)); }
+.hero-portrait-caption { position: absolute; right: 0; bottom: 8px; left: 0; display: flex; justify-content: space-between; gap: 12px; padding: 11px 0 0; border-top: 1px solid rgba(241,243,233,.2); color: rgba(239,243,233,.6); font: 7px var(--font-mono); letter-spacing: .11em; }
+.hero-portrait-caption span:first-child { display: inline-flex; align-items: center; gap: 8px; color: #e8eedf; }
+.hero-portrait-caption i { width: 5px; height: 5px; border-radius: 50%; background: #d3f477; box-shadow: 0 0 9px rgba(211,244,119,.6); }
 
 @media (max-width: 900px) {
   .work-featured, .work-featured-reverse { grid-template-columns: minmax(235px, .8fr) minmax(0, 1.2fr); }
   .work-grid-additional { grid-template-columns: repeat(2, minmax(0,1fr)); }
 }
+@media (max-width: 1023px) {
+  .hero-portrait { max-width: 500px; }
+}
 @media (max-width: 767px) {
+  .hero-portrait { width: min(100%, 430px); max-width: 430px; justify-self: center; }
+  .hero-portrait-caption { bottom: 5px; font-size: 6px; }
   .work-featured, .work-featured-reverse { grid-template-columns: 1fr; padding: 14px 0 24px; }
   .work-featured-reverse .work-feature-artwork { order: 0; }
   .work-feature-copy { min-height: 0; padding: 15px 0 22px; }

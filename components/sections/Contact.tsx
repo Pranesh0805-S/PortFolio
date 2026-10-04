@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { ArrowUpRight, Mail, Send } from "lucide-react";
+import Reveal from "@/components/ui/Reveal";
 
 type Status = "idle" | "sending" | "sent" | "error";
 
@@ -44,7 +45,7 @@ export default function Contact() {
 
   return (
     <section id="contact" className="contact-section py-24 sm:py-32">
-      <div className="contact-layout mx-auto grid max-w-6xl gap-12 px-6 sm:px-10 lg:grid-cols-[.85fr_1.15fr] lg:gap-20">
+      <Reveal className="contact-layout mx-auto grid max-w-6xl gap-12 px-6 sm:px-10 lg:grid-cols-[.85fr_1.15fr] lg:gap-20">
         <div className="contact-copy">
           <p className="contact-kicker font-mono text-[10px] uppercase tracking-[.18em]">
             <span /> Get in touch
@@ -96,7 +97,7 @@ export default function Contact() {
           </form>
         )}
         </div>
-      </div>
+      </Reveal>
     </section>
   );
 }

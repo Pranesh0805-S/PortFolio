@@ -72,7 +72,7 @@ export const projects: Project[] = [
     image: "/projects/markdrop.png",
   },
   {
-    slug: "Flow State",
+    slug: "flow-state",
     name: "Flow State",
     category: "Full Stack / Automation",
     description:
