@@ -4,7 +4,7 @@ import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import Reveal from "@/components/ui/Reveal";
 import GitHubCalendarPanel from "@/components/sections/GitHubCalendarPanel";
-import { getRecentGitHubActivity } from "@/lib/githubActivity";
+import { getRecentGitHubActivity, getPublicRepositoryCount } from "@/lib/githubActivity";
 
 export const metadata: Metadata = {
   title: "Coding Activity — Pranesh S.",
@@ -14,7 +14,7 @@ export const metadata: Metadata = {
 export const revalidate = 3600;
 
 export default async function ActivityPage() {
-  const activity = await getRecentGitHubActivity();
+  const [activity, repositoryCount] = await Promise.all([getRecentGitHubActivity(), getPublicRepositoryCount()]);
   return <>
     <Navbar />
     <main className="editorial-page activity-page">
@@ -28,15 +28,17 @@ export default async function ActivityPage() {
         <Reveal className="activity-card activity-github">
           <div className="activity-card-heading"><span><Code2 size={17} /> GITHUB / LAST YEAR</span><a href="https://github.com/Pranesh0805-S" target="_blank" rel="noopener noreferrer" aria-label="Open GitHub profile"><ArrowUpRight size={17} /></a></div>
           <h2>Code in public.</h2>
-          <p>Contribution rhythm across public repositories.</p>
+          <p>Contribution rhythm across public repositories. {repositoryCount === null ? "Browse the profile for the current repository list." : `${repositoryCount} public repositories to explore.`}</p>
           <GitHubCalendarPanel />
           <a className="activity-card-link" href="https://github.com/Pranesh0805-S" target="_blank" rel="noopener noreferrer">Open GitHub profile <ArrowUpRight size={15} /></a>
+          {repositoryCount !== null && <div className="activity-stat-strip"><strong>{repositoryCount}</strong><span>PUBLIC REPOSITORIES</span><a href="https://github.com/Pranesh0805-S?tab=repositories" target="_blank" rel="noopener noreferrer">Browse them <ArrowUpRight size={13} /></a></div>}
         </Reveal>
         <Reveal className="activity-card activity-leetcode" delay={.08}>
           <div className="activity-card-heading"><span><Trophy size={17} /> LEETCODE / PRACTICE</span><a href="https://leetcode.com/u/pranesh0805-s/" target="_blank" rel="noopener noreferrer" aria-label="Open LeetCode profile"><ArrowUpRight size={17} /></a></div>
           <div className="leetcode-visual" aria-hidden="true"><div className="leetcode-orbit orbit-one" /><div className="leetcode-orbit orbit-two" /><span>{"{}"}</span></div>
           <h2>Think it through.</h2>
-          <p>My problem-solving profile, where current streaks, submissions, and progress stay up to date.</p>
+          <p>A live window into problem-solving practice. Open the profile for current submissions, streaks, contest history, and solved-problem details.</p>
+          <div className="leetcode-focus"><span>01 <b>Practice</b><small>Work through a problem</small></span><span>02 <b>Review</b><small>Learn from each attempt</small></span><span>03 <b>Progress</b><small>Follow the profile activity</small></span></div>
           <a className="activity-card-link" href="https://leetcode.com/u/pranesh0805-s/" target="_blank" rel="noopener noreferrer">Visit LeetCode profile <ArrowUpRight size={15} /></a>
         </Reveal>
       </section>

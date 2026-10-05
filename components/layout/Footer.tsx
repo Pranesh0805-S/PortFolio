@@ -1,5 +1,6 @@
 import { ArrowUpRight } from "lucide-react";
 import Reveal from "@/components/ui/Reveal";
+import BackToTop from "@/components/layout/BackToTop";
 
 export default function Footer() {
   return (
@@ -12,7 +13,7 @@ export default function Footer() {
         </div>
       </Reveal>
       <div className="footer-marquee" aria-hidden="true"><span>PRANESH S. — FULL-STACK DEVELOPER — </span><span>PRANESH S. — FULL-STACK DEVELOPER — </span></div>
-      <div className="footer-bottom"><span>© {new Date().getFullYear()} PRANESH S.</span><span>DESIGNED & BUILT IN COIMBATORE, INDIA</span><a href="/#top">BACK TO TOP ↑</a></div>
+      <div className="footer-bottom"><span>© {new Date().getFullYear()} PRANESH S.</span><span>DESIGNED & BUILT IN COIMBATORE, INDIA</span><BackToTop /></div>
     </footer>
   );
 }

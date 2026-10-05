@@ -37,7 +37,7 @@ export default async function ProjectPage({ params }: Props) {
       </Reveal>
       <section className="project-detail-grid">
         <div><p className="section-kicker">OVERVIEW</p><h2>Built to make<br /><em>the work easier.</em></h2></div>
-        <div className="project-detail-copy"><p>{project.description}</p><p>This project is part of a hands-on portfolio focused on useful interfaces, practical automation, and AI-assisted workflows. Its public repository includes the implementation and the details behind the build.</p></div>
+        <div className="project-detail-copy"><p>{project.problem}</p><p>{project.buildNotes}</p><p>{project.description}</p></div>
       </section>
       <section className="project-detail-stack"><div><p className="section-kicker">TOOLS / TECHNOLOGIES</p><h2>Made with intention.</h2></div><ul>{project.stack.map((tool, index) => <li key={tool}><span>{String(index + 1).padStart(2, "0")}</span>{tool}</li>)}</ul></section>
       <section className="project-detail-next"><p>More practical builds, coming from the same curiosity.</p><Link href="/work">Explore all projects <ArrowUpRight size={15} /></Link></section>

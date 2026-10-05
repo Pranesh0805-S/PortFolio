@@ -21,7 +21,7 @@ export default function ToolkitPage() {
         <p className="section-kicker">HOW I BUILD / THE TOOLKIT</p>
         <h1>Tools with<br /><em>a purpose.</em></h1>
         <p className="editorial-lede">A practical stack for building clear interfaces, dependable services, and thoughtful AI workflows. Each tool below connects to work you can explore.</p>
-        <div className="editorial-count"><span>12 CORE TOOLS</span><span>LINKED TO PROJECTS</span></div>
+        <div className="editorial-count"><span>{TOOLSETS.reduce((total, group) => total + group.tools.length, 0)} CORE TOOLS</span><span>LINKED TO PROJECTS</span></div>
       </header>
       <section className="toolkit-groups" aria-label="Tools and technologies">
         {TOOLSETS.map((group, index) => {

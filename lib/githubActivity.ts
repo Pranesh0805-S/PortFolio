@@ -52,3 +52,18 @@ export async function getRecentGitHubActivity(): Promise<GitHubActivity[]> {
     return [];
   }
 }
+
+export async function getPublicRepositoryCount(): Promise<number | null> {
+  try {
+    const response = await fetch("https://api.github.com/users/Pranesh0805-S", {
+      headers: { Accept: "application/vnd.github+json", "X-GitHub-Api-Version": "2026-03-10" },
+      next: { revalidate: 3600 },
+      signal: AbortSignal.timeout(2500),
+    });
+    if (!response.ok) return null;
+    const profile = await response.json() as { public_repos?: number };
+    return typeof profile.public_repos === "number" ? profile.public_repos : null;
+  } catch {
+    return null;
+  }
+}
